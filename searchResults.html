@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FURR.Search Results</title>
+    <title>FURR.Results</title>
 
     <!-- jQuery Ref -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -27,31 +27,94 @@
         <h1>FURR.</h1>
         <h3>It's like Tinder, except for pets.</h3>
     </div>
-    
-    <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-    <div class='container'>
-        <div id='petImg'>
-            <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
+
+<!-- These dropdowns are going to the top of the header and won't be part of the main section -->
+    <!-- First dropdown to search for a specific breed -->
+    <!-- Will change this to a text box that can autofill -->
+    <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Breed
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Placeholder 1</a>
+                <a class="dropdown-item" href="#">Placeholder 2</a>
+                <a class="dropdown-item" href="#">Placeholder 3</a>
+                <a class="dropdown-item" href="#">Placeholder 4</a>
+            </div>
         </div>
 
-        <!-- for pet info -->
-        <div class='petInfo'>
-            <p id='petName'>Name</p>
-            <p id='petAge'>Age</p>
-            <p id='petGender'>Gender</p>
+        <!-- Second dropdown to search for a specific gender -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Gender
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Placeholder 1</a>
+                <a class="dropdown-item" href="#">Placeholder 2</a>
+                <a class="dropdown-item" href="#">Placeholder 3</a>
+                <a class="dropdown-item" href="#">Placeholder 4</a>
+            </div>
         </div>
 
-        <!-- Pet description, hopefully it's not too long -->
-        <div id='petDesc'>
-            <p>
-                Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies.
-                Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.
-            </p>
+        <!-- Third dropdown to search for a specific age, possibly use an age range -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Age
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Placeholder 1</a>
+                <a class="dropdown-item" href="#">Placeholder 2</a>
+                <a class="dropdown-item" href="#">Placeholder 3</a>
+                <a class="dropdown-item" href="#">Placeholder 4</a>
+            </div>
         </div>
 
-        <!-- So we can call the pet's owner/shelter/whatever -->
-        <div id='contactInfo'>
-            <p>925-333-4467</p>
+        <!-- Fourth dropdown to search for a specific size, possibly use a size range -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Size
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Placeholder 1</a>
+                <a class="dropdown-item" href="#">Placeholder 2</a>
+                <a class="dropdown-item" href="#">Placeholder 3</a>
+                <a class="dropdown-item" href="#">Placeholder 4</a>
+            </div>
+        </div>
+
+    <div class="card" style="width: 400px;">
+        <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+        <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
+        
+        <div class="card-body">
+            <!-- for pet info -->
+            <div class='petInfo'>
+                <h5 class="petName">Fido</h5>
+        
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <p id='petAge'>3 yo</p>
+                    </div>
+                
+                    <div class='col-md-3'>
+                        <p id='petGender'>Male</p>
+                    </div>
+                </div>
+            
+                <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
+                <div>
+                    <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
+                </div>
+            </div>
+
+            <!-- So we can call the pet's owner/shelter/whatever -->
+            <div id='contactInfo'>
+                <p>925-333-4467</p>
+            </div>
         </div>
     </div>
 
@@ -76,7 +139,6 @@
     <!-- Dev Scripts -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
     <script type='text/javascript' src="assets/javascript/firebase.js"></script>
-
 </body>
 
 </html>
