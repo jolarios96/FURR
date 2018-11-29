@@ -2,4 +2,14 @@
     overflow-y: auto;
     height: 250px;
     padding: 1rem;
+<<<<<<< HEAD
+=======
+    text-align: justify;
+}
+
+/* Hides the scrollbar. Don't ask me how, just trust me... */
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+>>>>>>> 316420878449501d63918db5980e5082fa74e77d
 }
