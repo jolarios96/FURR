@@ -2,7 +2,7 @@ initApp = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             var uiConfig = {
-                signInSuccessUrl: 'welcome.html', // redirect url
+                // signInSuccessUrl: 'welcome.html', // redirect url
                 signInOptions: [
                     // Leave the lines as is for the providers you want to offer your users.
                     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -25,7 +25,9 @@ initApp = function () {
         else {
             window.location.href = "welcome.html"
         }
+        
     });
+
 };
 
 window.addEventListener('load', function () {
