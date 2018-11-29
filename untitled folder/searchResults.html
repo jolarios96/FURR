@@ -30,15 +30,18 @@
     
     <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
     <div class='container'>
-        <div id='petImg'>
+        <div class='PetPhoto'>
             <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
         </div>
 
         <!-- for pet info -->
         <div class='petInfo'>
-            <p id='petName'>Name</p>
-            <p id='petAge'>Age</p>
-            <p id='petGender'>Gender</p>
+        
+            <div class='PetName'>Pet Name</div>
+            <div class='PetId'>Pet Id</div>
+            
+            <div class='PetDescription'>Pet Description</div>
+        
         </div>
 
         <!-- Pet description, hopefully it's not too long -->
@@ -72,6 +75,67 @@
         };
         firebase.initializeApp(config);
     </script>
+      
+
+
+
+      <script>
+        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'; // assign our key to a variable, easier to read
+        $( document ).ready(function() {
+        //	event.preventDefault();
+            var zip = 'Oakland,CA' ;///document.getElementById('zip').value; // this line gets the zip code from the form entry
+            var url = 'http://api.petfinder.com/pet.find';
+           var pet =    document.petType ;////document.getElementById('pet').value;;
+       console.log(document.petType)
+        $('.PetPhoto').empty();
+        $.ajax({
+            url: url,
+            jsonp: "callback",
+            dataType: "jsonp",
+        data: {
+            key: apiKey,
+            animal: pet,
+            location: zip,
+            output: 'basic',
+            format: 'json'
+        },
+
+        
+
+
+        success: function( response ) {
+           /// debugger;
+
+
+        console.log("pet response",response);
+        
+           // var 
+          //  petName = response.petfinder.pet.name.$t
+           // petId = response.petfinder.pet.id.$t
+           // petPhoto = response.petfinder.pet.id.$t
+          ///  petDescription = response.petfinder.pet.description.$t
+            
+           /// petPhotosize = response.petfinder.pet.media.photos.photo[2].$t
+           
+          //  console.log("taco",petName);
+          //  console.log("taco",petPhotosize);
+          //  $(".PetName").text(petName);
+          //  $(".PetId").text(petId);
+           // /$(".PetDescription").text(petDescription);
+           //  var pImg = $('<img />');
+           /// pImg.attr('src',petPhotosize).appendTo(".PetPhoto")
+    
+           /// console.log(response);
+        }
+        
+    });
+    })
+
+
+        
+        </script>
+
+
     <!--  -->
 
     <!-- Dev Scripts -->

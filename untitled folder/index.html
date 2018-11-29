@@ -34,19 +34,20 @@
         </div>
 
         <!-- Pressing this button *should* narrow down results to cat specific parameters  -->
+        <form action="searchResults.html" class="search">
         <div id="catButton">
-            <button>
+            <button value='cat' name="petType">
                 <h5>Cats</h5>
             </button>
         </div>
 
         <!-- Same thing as the Cat button but for dogs -->
         <div id="dogButton">
-            <button>
+            <button value='dog' name="petType">
                 <h5>Dogs</h5>
             </button>
         </div>
-
+    </form>
         <!-- First dropdown to search for a specific breed -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
