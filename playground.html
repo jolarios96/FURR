@@ -32,7 +32,7 @@ crossorigin="anonymous"></script>
 <script>
 apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
 var zip = 98112;
-        var url = 'http://api.petfinder.com/breed.list';
+        var url = 'http://api.petfinder.com/pet.find';
         var pet = "dog";
 
         
@@ -45,14 +45,14 @@ var zip = 98112;
             data: {
                 key: apiKey,
                 animal: pet,
-                // 'location': zip,
+                'location': zip,
                 output: 'basic',
                 format: 'json'
             }}).then(function (response) {
                 console.log(response)
-                // $("#pet-image").attr("src", response.petfinder.pets.pet[1].media.photos.photo[2].$t);
-                // $("#pet-name").html(response.petfinder.pets.pet[1].name.$t);
-                // $("#pet-bio").html(response.petfinder.pets.pet[1].description.$t);
+                $("#pet-image").attr("src", response.petfinder.pets.pet[1].media.photos.photo[2].$t);
+                $("#pet-name").html(response.petfinder.pets.pet[1].name.$t);
+                $("#pet-bio").html(response.petfinder.pets.pet[1].description.$t)
 
             })
 </script>
