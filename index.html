@@ -15,16 +15,21 @@
 
     <!-- Dev Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="titleCard">
         <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">FURR.</h1>
-                <p class="lead">It's like Tinder, except for pets.</p>
-            </div>          
-        </div>
+            <!-- <img src='assets/images/banner.png'> -->
+            <div class="title">
+                <h1 class="display-4" id='furr'>FURR.</h1>
+            </div>
+                <p class="siteDesc">It's like Tinder, except for pets.</p>
+        </div>          
     </div>
 
     <div class="container">
@@ -47,7 +52,6 @@
             </div>
             <div class='col-md-3'>
                 <div class="form-group">
-                    <label for="zip-code">Zip Code</label>
                     <input type="zip" class="form-control" id="zip-code" placeholder="Enter Zip Code">
                 </div>
             </div>
@@ -64,8 +68,9 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
-
+        <div col='col-md-12'>
+            <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
+        </div>
     </div>
 
 
