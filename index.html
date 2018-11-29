@@ -19,51 +19,52 @@
 
 <body>
     <div class="titleCard">
-        <h1>FURR.</h1>
-        <h3>It's like Tinder, except for pets.</h3>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">FURR.</h1>
+                <p class="lead">It's like Tinder, except for pets.</p>
+            </div>          
+        </div>
     </div>
 
     <div class="container">
-        <div>
-            <h5>Looking for: </h5>
-        </div>
-
-        <!-- Pressing this button *should* narrow down results to cat specific parameters  -->
-        <div id="catButton">
-            <button>
-                <h5>Cats</h5>
-            </button>
-        </div>
-
-        <!-- Same thing as the Cat button but for dogs -->
-        <div id="dogButton">
-            <button>
-                <h5>Dogs</h5>
-            </button>
-        </div>
-
-        <!-- Location textbox -->
-        <input type="text">
-
-        <!-- Radius drop down -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Radius
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">10</a>
-                <a class="dropdown-item" href="#">25</a>
-                <a class="dropdown-item" href="#">50</a>
-                <a class="dropdown-item" href="#">100</a>
-                <a class="dropdown-item" href="#">Anywhere</a>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div>
+                    <h5>Looking for: </h5>
+                </div>
             </div>
         </div>
 
-        <!-- Button that initiates the search taking cat/dog button, location, and radius fields -->
-        <button>
-            <h5>Go!</h5>
-        </button>
+        <div class='row'>
+            <div class='col-md-3'>    
+                <!-- Pressing this button *should* narrow down results to cat specific parameters  -->
+                <div id="catButton">
+                    <button>
+                        <h5>Cats</h5>
+                    </button>
+                </div>
+            </div>
+            <div class='col-md-3'>
+                <div class="form-group">
+                    <label for="zip-code">Zip Code</label>
+                    <input type="zip" class="form-control" id="zip-code" placeholder="Enter Zip Code">
+                </div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-3'>
+                <!-- Same thing as the Cat button but for dogs -->
+                <div id="dogButton">
+                    <button>
+                        <h5>Dogs</h5>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
 
     </div>
 

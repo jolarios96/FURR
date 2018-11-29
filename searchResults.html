@@ -23,72 +23,64 @@
 </head>
 
 <body>
-    <div class='titleBanner'>
-        <h1>FURR.</h1>
-        <h3>It's like Tinder, except for pets.</h3>
-    </div>
-
-<!-- These dropdowns are going to the top of the header and won't be part of the main section -->
-    <!-- First dropdown to search for a specific breed -->
-    <!-- Will change this to a text box that can autofill -->
-    <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Breed
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-bran" href="#"><h3>Furr.</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Placeholder 1</a>
-                <a class="dropdown-item" href="#">Placeholder 2</a>
-                <a class="dropdown-item" href="#">Placeholder 3</a>
-                <a class="dropdown-item" href="#">Placeholder 4</a>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Breed</a>
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true"           aria-expanded="false">
+                            Gender
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Male</a>
+                            <a class="dropdown-item" href="#">Female</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
+                            Age
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Baby</a>
+                            <a class="dropdown-item" href="#">Young</a>
+                            <a class="dropdown-item" href="#">Adult</a>
+                            <a class="dropdown-item" href="#">Senior</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                                <a class="dropdown-item" href="#">Small</a>
+                                <a class="dropdown-item" href="#">Medium</a>
+                                <a class="dropdown-item" href="#">Large</a>
+                                <a class="dropdown-item" href="#">Extra-Large</a>
+                        </div>
+                        <br>
+                    </div>
+                </li>
+            </ul>
         </div>
-
-        <!-- Second dropdown to search for a specific gender -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Gender
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Placeholder 1</a>
-                <a class="dropdown-item" href="#">Placeholder 2</a>
-                <a class="dropdown-item" href="#">Placeholder 3</a>
-                <a class="dropdown-item" href="#">Placeholder 4</a>
-            </div>
-        </div>
-
-        <!-- Third dropdown to search for a specific age, possibly use an age range -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Age
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Placeholder 1</a>
-                <a class="dropdown-item" href="#">Placeholder 2</a>
-                <a class="dropdown-item" href="#">Placeholder 3</a>
-                <a class="dropdown-item" href="#">Placeholder 4</a>
-            </div>
-        </div>
-
-        <!-- Fourth dropdown to search for a specific size, possibly use a size range -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Size
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Placeholder 1</a>
-                <a class="dropdown-item" href="#">Placeholder 2</a>
-                <a class="dropdown-item" href="#">Placeholder 3</a>
-                <a class="dropdown-item" href="#">Placeholder 4</a>
-            </div>
-        </div>
+    </nav>
 
     <div class="card" style="width: 400px;">
         <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-        <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
+        <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
         
         <div class="card-body">
             <!-- for pet info -->
