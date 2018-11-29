@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+                <div class="form-group">
+                  <label for="user-email">Email address</label>
+                  <input type="email" class="form-control" id="user-email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="zip-code">Zip Code</label>
+                  <input type="zip" class="form-control" id="zip-code" placeholder="Enter Zip Code">
+                </div>
+                
+                <div class="form-group">
+                    <label for="breed-input">Breed</label>
+                    <input type="text" class="form-control" placeholder="Optional" id="breed-input">
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gender
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Male</a>
+                            <a class="dropdown-item" href="#">Female</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Age
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Baby</a>
+                            <a class="dropdown-item" href="#">Young</a>
+                            <a class="dropdown-item" href="#">Adult</a>
+                            <a class="dropdown-item" href="#">Senior</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Small</a>
+                            <a class="dropdown-item" href="#">Medium</a>
+                            <a class="dropdown-item" href="#">Large</a>
+                            <a class="dropdown-item" href="#">Extra-Large</a>
+                        </div>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
+                </div>
+            </form>    
+            </div>
+            
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+    $(document).on("click", ".dropdown-item", function(event) {
+        event.preventDefault();
+        var toucher = $(this).parent().children();
+        toucher.removeClass("active");
+        $(this).addClass("active");
+     })
+     $("#submit-input").on("click", function(event){
+        event.preventDefault();
+        var area = $("#zip-code").val().trim();
+        var breed = $("#breed-input").val().trim();
+        var gender = $("#gender-input").children(".active").text();
+            if (gender === "Male"){
+                gender = "M";
+            }
+            else if (gender==="Female"){
+                gender = "F";
+            }
+            else {
+                gender="";
+            }
+        var age = $("#age-input").children(".active").text();
+            if(age==="Any"){
+                age ="";
+            }
+        var size = $("#size-input").children(".active").text();
+            if(size==="Any"){
+                size="";
+            }
+        
+        console.log(area);
+        console.log(breed);
+        console.log(gender);
+        console.log(age);
+        console.log(size);
+        
+        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
+        var url = 'http://api.petfinder.com/pet.find';
+        var pet = "dog";
+         
+        // Within $.ajax{...} is where we fill out our query
+        $.ajax({
+            url: url,
+            method: "GET",
+            jsonp: "callback",
+            dataType: "jsonp",
+            data: {
+                key: apiKey,
+                animal: pet,
+                breed: breed,
+                size: size,
+                sex: gender,
+                age: age,
+                location: area,
+                count: 1,
+                output: 'basic',
+                format: 'json'
+            }}).then(function (response) {
+                console.log(response)
+                // $("#pet-image").attr("src", response.petfinder.pets.pet[1].media.photos.photo[2].$t);
+                // $("#pet-name").html(response.petfinder.pets.pet[1].name.$t);
+                // $("#pet-bio").html(response.petfinder.pets.pet[1].description.$t);
+             })
+    })
+    </script>
+ </body>
+</html> 
