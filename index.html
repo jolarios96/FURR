@@ -6,37 +6,15 @@
     <meta charset="UTF-8">
     <title>FURR.Home</title>
 
-    <!-- jQuery Ref -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
     <!-- Bootstrap Ref -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
     <!-- Dev Styles -->
-    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!---->
-
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script>
-        // firebase initialization
-        var config = {
-            apiKey: "AIzaSyDzixpXHU87uZ_gbAfy6YP3btwUVek9rWw",
-            authDomain: "project-furr.firebaseapp.com",
-            databaseURL: "https://project-furr.firebaseio.com",
-            projectId: "project-furr",
-            storageBucket: "project-furr.appspot.com",
-            messagingSenderId: "654872510123"
-        };
-        firebase.initializeApp(config);
-    </script>
-
-    <!-- Firebase UI for Authentication -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
 </head>
 
 <body>
@@ -83,17 +61,24 @@
         </div>
 
         <!-- Button that initiates the search taking cat/dog button, location, and radius fields -->
-        <button><h5>Go!</h5></button>
+        <button>
+            <h5>Go!</h5>
+        </button>
 
     </div>
 
 
 
+    <!-- SCRIPTS BELOW -->
+    <!-- =========================================================================================================================== -->
+
     <!-- jQuery Ref -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- =========================================================================================================================== -->
 
     <!-- Dev Scripts -->
-    <!-- script for finished firebase js -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
