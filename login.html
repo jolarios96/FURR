@@ -21,6 +21,7 @@
     <div class="card mx-auto" style="width: 18rem;">
         <h3 id='sign-in-header' style='text-align: center'></h3>
         <div id="firebaseui-auth-container"></div>
+        <div id="redirect-btn" class='mx-auto'></div>
     </div>
 
     <!-- SCRIPTS BELOW -->
@@ -70,12 +71,22 @@
                 else {
                     $('#sign-in-header').text('Already Signed In!')
 
-                    // window.location.href = "welcome.html"
+                    var newBtn = $('<button>');
+                    newBtn.addClass('btn');
+                    newBtn.addClass(' btn-primary');
+                    newBtn.addClass(' btn-lg');
+                    newBtn.text('Return to Main Page');
+                    $('#redirect-btn').append(newBtn);
+                    // window.location.href = "welcome.html";
                 }
 
             });
 
         };
+
+        $('#redirect-btn').on('click', function () {
+            window.location.href = "welcome.html"
+        });
 
         window.addEventListener('load', function () {
             initApp();
