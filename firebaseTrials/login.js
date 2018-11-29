@@ -1,4 +1,5 @@
 // This code is what generates the login options
+
 // FirebaseUI config.
 var uiConfig = {
     signInSuccessUrl: 'welcome.html', // redirect url
@@ -12,15 +13,7 @@ var uiConfig = {
         // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
         firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ]
-    // ,
-    // tosUrl and privacyPolicyUrl accept either url string or a callback
-    // function.
-    // Terms of service url/callback.
-    // tosUrl: '<your-tos-url>',
-    // // Privacy policy url/callback.
-    // privacyPolicyUrl: function () {
-    //     window.location.assign('<your-privacy-policy-url>');
-    // }
+
 };
 
 // Initialize the FirebaseUI Widget using Firebase.
