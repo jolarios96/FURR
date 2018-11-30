@@ -1,18 +1,6 @@
 // If the user is signed in
 // Pull user's data
 
-
-// firebase initialization
-var config = {
-    apiKey: "AIzaSyDzixpXHU87uZ_gbAfy6YP3btwUVek9rWw",
-    authDomain: "project-furr.firebaseapp.com",
-    databaseURL: "https://project-furr.firebaseio.com",
-    projectId: "project-furr",
-    storageBucket: "project-furr.appspot.com",
-    messagingSenderId: "654872510123"
-};
-firebase.initializeApp(config);
-
 // database ref
 var userData = firebase.database();
 
