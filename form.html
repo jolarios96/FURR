@@ -13,10 +13,6 @@
     <div class="container">
         <form>
                 <div class="form-group">
-                  <label for="user-email">Email address</label>
-                  <input type="email" class="form-control" id="user-email" placeholder="Enter email">
-                </div>
-                <div class="form-group">
                   <label for="zipCode">Zip Code</label>
                   <input type="zip" class="form-control" id="zipCode" placeholder="Enter Zip Code">
                 </div>
@@ -26,6 +22,17 @@
                     <input type="text" class="form-control" placeholder="Optional" id="breed-input">
                 </div>
                 
+                <div class="col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownPet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pet Type
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownPet" id="pet-input">
+                            <a class="dropdown-item active" href="#">Dog</a>
+                            <a class="dropdown-item" href="#">Cat</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +72,7 @@
                     <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
                 </div>
             </form>    
-            <div class="card" style="width: 350px;">
+            <div class="card" style="width: 450px;">
                 <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
                 <img src="assets/images/placeholder.png" id ="petImage" class="img-thumbnail place-holder" alt="just a placeholder">
                 
@@ -109,8 +116,8 @@
     <script>
     //sets up an array to push favs into
     var favArray = []
-    if(localStorage.favorties !== undefined){
-        favArray=JSON.parse(localStorage.favorties);
+    if(localStorage.favorites !== undefined){
+        favArray=JSON.parse(localStorage.favorites);
     }
     else{
         favArray = []
@@ -124,13 +131,14 @@
     var size;
     var breed;
     var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a';
-    var pet = "dog";
+    var pet;
     var url;
+    var petsToSee = [];
         //offset variable here
     var counter = 0;
 
         //non-functioning check for duplicates variable
-    var dejaVu = false;
+    var dejaVu;
 
     
     //keeps highlighted option selected in dropdowns above
@@ -169,6 +177,7 @@
             if(size==="Any"){
                 size="";
             }
+        pet=$("#pet-input").children(".active").text();
         //gets rid of the form div
         $('form').empty();
         console.log(area);
@@ -176,6 +185,7 @@
         console.log(gender);
         console.log(age);
         console.log(size);
+        console.log(pet);
         
 
         // Within $.ajax{...} is where we fill out our query
@@ -184,24 +194,21 @@
     
     $("#approve").on("click", function(){
         favArray.push(petID);
-        scramble();
-        localStorage.favorties = JSON.stringify(favArray);
+        display(petsToSee);
+        localStorage.favorites = JSON.stringify(favArray);
         localStorage.counter=counter;
-        // doOver();
         
     })
 
     $("#disapprove").on("click", function() {
-        scramble();
+        display(petsToSee);
         localStorage.counter = counter;
-        // doOver();
     })
 
     //API call to petfinder API
     function scramble() {
         apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         url = 'http://api.petfinder.com/pet.find';
-        pet = "dog";
         $.ajax({
             url: url,
             method: "GET",
@@ -209,56 +216,50 @@
             dataType: "jsonp",
             data: {
                 key: apiKey,
-                animal: pet,
+                animal: pet.toLowerCase(),
                 breed: breed,
                 size: size,
                 sex: gender,
                 age: age,
                 location: area,
-                count: 1,
-                offset: counter,
+                count: 100,
+                offset: 0,
                 output: 'basic',
                 format: 'json'
-            }}).then(function (response){
-                console.log(response);
-                checkPets(response);
-                    // !BROKEN! check to see if we've seen this pet before
-                // if(!dejaVu){
-                    $("#petImage").attr("src", response.petfinder.pets.pet.media.photos.photo[2].$t);
-                    $("#petName").html(response.petfinder.pets.pet.name.$t);
-                    $("#scrollBox").html(response.petfinder.pets.pet.description.$t);
-                    $("#petGender").html(response.petfinder.pets.pet.sex.$t)
-                    $("#petAge").html(response.petfinder.pets.pet.age.$t)
-                    var contact = $("<div>");
-                    contact.append($("<p>").text(response.petfinder.pets.pet.contact.phone.$t), $("<p>").text(response.petfinder.pets.pet.contact.email.$t));
-                    $("#contactInfo").html(contact)
-                    petID = response.petfinder.pets.pet.id.$t;
-                    counter ++;
-                // }
-                // else {
-                //     while(dejaVu){
-                //         counter++;
-                //         checkPets(response);
-                //     }
-                // }
+        }}).then(function (response){
+            console.log(response);
+            for(var i = 0; i <response.petfinder.pets.pet.length; i++){
+                petsToSee.push(response.petfinder.pets.pet[i])
+            }
+            display(petsToSee);
             })
     }
     
-    //!Broken! checks to see if pets have been seen before
-    function checkPets (response) {
-        dejaVu = false;
-        for (var i = 0; i<favArray.length; i ++){
-            if (favArray[i]===response.petfinder.pets.pet.id.$t) {
-                dejaVu = true;
-            }
+    function display (chicken) {
+        petID = chicken[counter].id.$t;
+        checkPets(chicken);
+        if(!dejaVu){
+            $("#petImage").attr("src", chicken[counter].media.photos.photo[2].$t);
+            $("#petName").html(chicken[counter].name.$t);
+            $("#scrollBox").html(chicken[counter].description.$t);
+            $("#petGender").html(chicken[counter].sex.$t)
+            $("#petAge").html(chicken[counter].age.$t)
+            var contact = $("<div>");
+            contact.append($("<p>").text(chicken[counter].contact.phone.$t), $("<p>").text(chicken[counter].contact.email.$t));
+            $("#contactInfo").html(contact)
+            counter++
+        }
+        else{
+            counter++
+            display(chicken);
         }
     }
 
-    //!broken! goes to next result if already seen before
-    function doOver(){
-        if (dejaVu){
-            while(dejaVu){
-                scramble();
+    function checkPets (response) {
+        dejaVu = false;
+        for (var i = 0; i<favArray.length; i ++){
+            if (favArray[i]===response[counter].id.$t) {
+                dejaVu = true;
             }
         }
     }
