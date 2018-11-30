@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             userID: user.uid,
         };
 
-        database.ref().child('/users/' + userID).set(userData);
+        database.ref().child('/users/' + user.uid).set(userData);
     }
 });
 
