@@ -17,10 +17,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                         console.log('childData: ' + childData.favorites);
                         console.log('childData: ' + childData.offset);
 
-                        // sessionStorage.setItem('name', childData.name);
-                        // sessionStorage.setItem('favorites', JSON.stringify(childData.favorites));
-                        // sessionStorage.setItem('offset',  childData.offset);
-                        // sessionStorage.setItem('userID', user.uid);
+                        sessionStorage.setItem('name', childData.name);
+                        sessionStorage.setItem('favArray', JSON.stringify(childData.favorites));
+                        sessionStorage.setItem('offset',  childData.offset);
+                        sessionStorage.setItem('userID', user.uid);
                     }
                 });
             });
