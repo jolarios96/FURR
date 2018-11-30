@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
 
         var name = user.displayName;
-        var userId = user.uid;
+        var userID = user.uid;
 
         // get data fromlocalStorage
         var offset = sessionStorage.getItem('offset');
@@ -18,18 +18,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             name: name,
             offset: offset,
             favorites: favorites, // was already stringified in sessionStorage
+            userID: userID,
         };
 
-        database.ref().child('/users/' + userId).set(userData);
-    }
-    else {
-        // else use localStorage for data
-        var name = user.displayName;
-        var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
-        var offset = sessionStorage.getItem('offset');
-
-       localStorage.setItem('name', name);
-       localStorage.setItem('favorites', favorites);
-       localStorage.setItem('offset', 0);
+        database.ref().child('/users/' + userID).set(userData);
     }
 });
+
+
