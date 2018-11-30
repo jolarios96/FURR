@@ -17,8 +17,8 @@
                   <input type="email" class="form-control" id="user-email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <label for="zip-code">Zip Code</label>
-                  <input type="zip" class="form-control" id="zip-code" placeholder="Enter Zip Code">
+                  <label for="zipCode">Zip Code</label>
+                  <input type="zip" class="form-control" id="zipCode" placeholder="Enter Zip Code">
                 </div>
                 
                 <div class="form-group">
@@ -65,24 +65,76 @@
                     <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
                 </div>
             </form>    
+            <div class="card" style="width: 350px;">
+                <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+                <img src="assets/images/placeholder.png" id ="petImage" class="img-thumbnail place-holder" alt="just a placeholder">
+                
+                <div class="card-body">
+                    <!-- for pet info -->
+                    <div class='petInfo'>
+                        <h5 id="petName">Mr.Whiskers</h5>
+                
+                        <div class='row'>
+                            <div class='col-md-3'>
+                                <p id='petAge'>6 yo</p>
+                            </div>
+                            
+                            <div class='col-md-3'>
+                                <p id='petGender'>Male</p>
+                            </div>
+                            <div class='col-md-6'id='contactInfo'>
+                                    <p>randomDopeEmail@lit.com</p>
+                            </div>
+                        </div>
+                    
+                    <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
+                        <div id='petDesc'>
+                            <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <button id="approve" class ="btn btn-success">Ohh yeah, I like that</button>
+                        <button id="disapprove" class = "btn btn-danger">Nah, I'm gonna pass</button>
+                    </div>    
+                </div>
             </div>
+        </div>
+
+            
             
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
+    var favArray = [];
+    var petID;
+    var area;
+    var gender;
+    var age;
+    var size;
+    var breed;
+    var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a';
+    var pet = "dog";
+    var url;
+    var counter = 0;
+    var dejaVu = false;
+
     $(document).on("click", ".dropdown-item", function(event) {
         event.preventDefault();
         var toucher = $(this).parent().children();
         toucher.removeClass("active");
         $(this).addClass("active");
-     })
-     $("#submit-input").on("click", function(event){
+
+
+    })
+
+    $("#submit-input").on("click", function(event){
         event.preventDefault();
-        var area = $("#zip-code").val().trim();
-        var breed = $("#breed-input").val().trim();
-        var gender = $("#gender-input").children(".active").text();
+        
+        area = $("#zipCode").val().trim();
+        breed = $("#breed-input").val().trim();
+        gender = $("#gender-input").children(".active").text();
             if (gender === "Male"){
                 gender = "M";
             }
@@ -92,26 +144,39 @@
             else {
                 gender="";
             }
-        var age = $("#age-input").children(".active").text();
+        age = $("#age-input").children(".active").text();
             if(age==="Any"){
                 age ="";
             }
-        var size = $("#size-input").children(".active").text();
+        size = $("#size-input").children(".active").text();
             if(size==="Any"){
                 size="";
             }
-        
+        $('form').empty();
         console.log(area);
         console.log(breed);
         console.log(gender);
         console.log(age);
         console.log(size);
         
-        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
-        var url = 'http://api.petfinder.com/pet.find';
-        var pet = "dog";
-         
+
         // Within $.ajax{...} is where we fill out our query
+        scramble();
+    })
+    
+    $("#approve").on("click", function(){
+        favArray.push(petID);
+        scramble();
+    })
+
+    $("#disapprove").on("click", function() {
+        scramble();
+    })
+
+    function scramble() {
+        apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
+        url = 'http://api.petfinder.com/pet.find';
+        pet = "dog";
         $.ajax({
             url: url,
             method: "GET",
@@ -126,15 +191,39 @@
                 age: age,
                 location: area,
                 count: 1,
+                offset: counter,
                 output: 'basic',
                 format: 'json'
-            }}).then(function (response) {
-                console.log(response)
-                // $("#pet-image").attr("src", response.petfinder.pets.pet[1].media.photos.photo[2].$t);
-                // $("#pet-name").html(response.petfinder.pets.pet[1].name.$t);
-                // $("#pet-bio").html(response.petfinder.pets.pet[1].description.$t);
-             })
-    })
+            }}).then(function (response){
+                console.log(response);
+                checkPets(response);
+                // if(!dejaVu){
+                    $("#petImage").attr("src", response.petfinder.pets.pet.media.photos.photo[2].$t);
+                    $("#petName").html(response.petfinder.pets.pet.name.$t);
+                    $("#scrollBox").html(response.petfinder.pets.pet.description.$t);
+                    $("#petGender").html(response.petfinder.pets.pet.sex.$t)
+                    $("#petAge").html(response.petfinder.pets.pet.age.$t)
+                    var contact = $("<div>");
+                    contact.append($("<p>").text(response.petfinder.pets.pet.contact.phone.$t), $("<p>").text(response.petfinder.pets.pet.contact.email.$t));
+                    $("#contactInfo").html(contact)
+                    petID = response.petfinder.pets.pet.id.$t;
+                    counter ++;
+                // }
+                // else {
+                //     counter++;
+                // }
+            })
+    }
+
+    function checkPets (response) {
+        dejaVu = false;
+        for (var i = 0; i<favArray.length; i ++){
+            if (favArray[i]===response.petfinder.pets.pet.id.$t) {
+                dejaVu = true;
+            }
+        }
+    }
     </script>
- </body>
-</html> 
+
+</body>
+</html>

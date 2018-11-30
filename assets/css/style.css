@@ -39,7 +39,7 @@
 
 #furrTitle {
     color: #F19483;
-    font-size: 33px;
+    font-size: 30px;
     text-align: left;
     padding: 0px;
     margin: 0px;
@@ -52,7 +52,7 @@
 #appDesc {
     font-family: 'Permanent Marker', cursive;
     color: #F19483;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #petCarousel {
@@ -65,14 +65,14 @@
 #welcome {
     font-family: 'Maven Pro', sans-serif;
     font-size: 36px;
-    padding-left: 100px;
+    padding-left: 25px;
 }
 
 #webDesc {
     font-family: 'Maven Pro', sans-serif;
     font-size: 24px;
-    padding-left: 125px;
-    padding-right: 400px;
+    padding-left: 25px;
+    padding-right: 125px;
     text-align: justify;
 }
 
@@ -87,4 +87,10 @@
 .homeWrapper {
     align-items: center;
     background-color: #656765;
+}
+
+#welcomeBtn {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
