@@ -1,3 +1,5 @@
+/* Website's primary color: #F19483 */
+
 #scrollBox {
     overflow-y: auto;
     height: 250px;
@@ -8,4 +10,87 @@
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.container {
+    float: auto;
+}
+
+.homeContainer {
+    padding: 150px 500px 150px 500px;
+}
+
+.jumbotron {
+    padding:0px;
+    margin: 0px;
+    border: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* .display-4 {
+    font-size: 60px;
+} */
+
+#furrTitle, #furrNav {
+    font-family: 'Permanent Marker', cursive;
+}
+
+#furrTitle {
+    color: #F19483;
+    font-size: 30px;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+.titleBox {
+    background-size: 50% 50%;
+}
+
+#appDesc {
+    font-family: 'Permanent Marker', cursive;
+    color: #F19483;
+    font-size: 17px;
+}
+
+#petCarousel {
+    max-width: 100%;
+    height: 60%;
+    align-self: center;
+    padding: 25px 100px 25px 100px;
+}
+
+#welcome {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 36px;
+    padding-left: 25px;
+}
+
+#webDesc {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 24px;
+    padding-left: 25px;
+    padding-right: 125px;
+    text-align: justify;
+}
+
+#text {
+    color: #e4e4e4;
+    font-size: 20px;
+    font-weight: 700;
+    outline-color: black;
+
+}
+
+.homeWrapper {
+    align-items: center;
+    background-color: #656765;
+}
+
+#welcomeBtn {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
