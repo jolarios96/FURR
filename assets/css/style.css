@@ -1,3 +1,5 @@
+/* Website's primary color: #F19483 */
+
 #scrollBox {
     overflow-y: auto;
     height: 250px;
@@ -15,12 +17,46 @@
 }
 
 .jumbotron {
-    /* background-color: #ff4800; */
-    /* font-family: 'Permanent Marker', cursive; */
-    border: 100px;
-    border-color: black;
+    padding:0px;
+    margin: 0px;
+    border: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* .display-4 {
+    font-size: 60px;
+} */
+
+#furrTitle, #furrNav {
+    font-family: 'Permanent Marker', cursive;
 }
 
-#furr {
+#furrTitle {
+    color: #F19483;
+    font-size: 35px;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+#furrNav {
+    color: #F19483;
+}
+
+.titleBox {
+    background-size: 50% 50%;
+}
+
+#appDesc {
     font-family: 'Permanent Marker', cursive;
+    color: #F19483;
+    font-size: 18px;
+}
+
+#containerImg {
+    max-height: 65%;
+    max-width: 65%;
+    align-self: center;
 }
