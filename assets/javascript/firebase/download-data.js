@@ -1,3 +1,7 @@
+// If the user is signed in
+// Pull user's data
+
+
 // firebase initialization
 var config = {
     apiKey: "AIzaSyDzixpXHU87uZ_gbAfy6YP3btwUVek9rWw",
