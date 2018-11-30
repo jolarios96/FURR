@@ -1,5 +1,5 @@
 
-// Attach this js to any page with a log-out button
+// Attach this js to a button to make sign out button.
 document.getElementById('sign-out').addEventListener('click', function () {
     
     // sign out

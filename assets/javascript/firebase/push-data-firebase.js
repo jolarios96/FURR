@@ -18,12 +18,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             name: name,
             offset: offset,
             favorites: favorites, // was already stringified in sessionStorage
+            userID = userID,
         };
 
         database.ref().child('/users/' + userID).set(userData);
     }
-
-
 });
 
 

@@ -12,6 +12,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                     // childData will be the actual contents of the child
 
                     var childData = childSnapshot.val();
+
+                    // if current user's id matches the snapshot's data key
                     if (user.uid === key) {
                         console.log('key: ' + key);
                         console.log('childData: ' + childData.name);
