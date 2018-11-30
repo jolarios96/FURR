@@ -23,29 +23,40 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1" id='furrTitle'>Furr .</span>
+        <button type="button" class="btn btn-secondary btn-sm" href='favorites.html' id='faveBtn'>favorites</button> <!-- This button doesn't feel like redirecting to the proper html file-->
+        <button type="button" class="btn btn-secondary btn-sm" href='home.html' id='faveBtn'>search</button> <!-- Placeholder for potential things -->
+        <button type="button" class="btn btn-secondary btn-sm" href='favorites.html' id='faveBtn'>cats</button> <!-- Placeholder for potential things -->
         <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
     </nav>
 
+<div class='indexWrapper'>
     <div id="petCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="assets/images/dog1.png" alt="First slide">
-
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5 id='text'>This is a BorkenStein</h5> -->
+                    <!-- <p id='text'>On a scale of 1 - 10 on the good boy scale, he is a 13. Borkenstein is a certified good boy.</p> -->
+                </div>
+            </div>  <!-- End of First Slide <div> -->
+            <div class="carousel-item">
+                <img class="d-block w-100" src="assets/images/dog1.png" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5 id='text'>This is a BorkenStein</h5>
                     <p id='text'>On a scale of 1 - 10 on the good boy scale, he is a 13. Borkenstein is a certified good boy.</p>
                 </div>
-            </div>
+            </div>  <!-- End of Second Slide <div> -->
             <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/placeholder3.png" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/placeholder3.png" alt="Third slide">
-            </div>
+                <img class="d-block w-100" src="assets/images/dog1.png" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 id='text'>This is a BorkenStein</h5>
+                    <p id='text'>On a scale of 1 - 10 on the good boy scale, he is a 13. Borkenstein is a certified good boy.</p>
+                </div>
+            </div>  <!-- End of Third Slide <div> -->
         </div>
-    </div>
+    </div>  <!-- End of petCarousel <div> -->
 
-    <hr>
+    <hr> <!-- Line break -->
 
     <div class='container'>
         <div class='row'>
@@ -57,24 +68,22 @@
         </div>
         <div class='row'>
             <div class='col-md-9'>
-                    <div id='webDesc'>
-                            <h3>
-                                Are you looking for one true love? Do you believe in love at first sight? Well, look no fur-ther! Furr. is
-                                designed to help you look for that purfect pet. Whether you're a dog person, cat purson, or just a general
-                                animal purson; we'll find the right companion fur you.
-                            </h3>
-                        </div>
+                <div id='webDesc'>
+                    <h3>
+                        Are you looking for one true love? Do you believe in love at first sight? Well, look no fur-ther! Furr. is designed to help you look for that purfect pet. Whether you're a dog person, cat purson, or just an animal person overall; we'll find the right companion fur you.
+                    </h3>
+                </div>
             </div>
 
             <div class='col-md-3'>
-                <!-- Not sure what this button will do, but it's here if needed -->
+                <!-- This button directs users to the long page. Huzzah! -->
                 <p class="lead" id='welcomeBtn'>
-                        <a class="btn btn-primary btn-lg" href="login.html" role="button">Lets get started!</a>
+                    <a class="btn btn-secondary btn-lg" href="login.html" role="button">Lets get started!</a>
                 </p>
             </div>
         </div>
     </div>
-
+</div>
 
     <!-- SCRIPTS BELOW -->
     <!-- =========================================================================================================================== -->
