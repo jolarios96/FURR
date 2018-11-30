@@ -197,7 +197,7 @@
             }}).then(function (response){
                 console.log(response);
                 checkPets(response);
-                if(!dejaVu){
+                // if(!dejaVu){
                     $("#petImage").attr("src", response.petfinder.pets.pet.media.photos.photo[2].$t);
                     $("#petName").html(response.petfinder.pets.pet.name.$t);
                     $("#scrollBox").html(response.petfinder.pets.pet.description.$t);
@@ -208,10 +208,10 @@
                     $("#contactInfo").html(contact)
                     petID = response.petfinder.pets.pet.id.$t;
                     counter ++;
-                }
-                else {
-                    counter++;
-                }
+                // }
+                // else {
+                //     counter++;
+                // }
             })
     }
 
