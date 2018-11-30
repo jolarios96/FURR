@@ -6,9 +6,7 @@
     <meta charset="UTF-8">
     <title>FURR.Search Results</title>
 
-    <!-- jQuery Ref -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
@@ -35,7 +33,7 @@
         <h1>FURR.</h1>
         <h3>It's like Tinder, except for pets.</h3>
     </div>
-    
+
     <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
     <div class='container'>
         <div class='PetPhoto'>
@@ -44,35 +42,40 @@
 
         <!-- for pet info -->
         <div class='petInfo'>
-        
+
             <div class='PetName'>Pet Name</div>
             <div class='PetId'>Pet Id</div>
             <div class='PetZip'>Pet Id</div>
-            
+
             <div class='PetDescription'>Pet Description</div>
-        
+
         </div>
 
         <!-- Pet description, hopefully it's not too long -->
-       
+
         <!-- So we can call the pet's owner/shelter/whatever -->
         <div id='contactInfo'>
-           
+
         </div>
 
         <div id="floating-panel">
             <input id="address" type="textbox" value="">
             <input id="submit" type="button" value="Locate It!">
-          </div>
+        </div>
         <div id="map"></div>
 
     </div>
 
 
-    <!-- jQuery Ref -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- SCRIPTS BELOW -->
+    <!-- =========================================================================================================================== -->
 
-    <!-- Initialize Firebase for all Scripts-->
+    <!-- jQuery Ref -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+
+    <!-- Initialize Firebase -->
     <script>
         // Initialize Firebase
         var config = {
@@ -85,105 +88,102 @@
         };
         firebase.initializeApp(config);
     </script>
+
     <script>
 
 
-           
+
         var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'; // assign our key to a variable, easier to read
-        $( document ).ready(function() {
-        
+        $(document).ready(function () {
+
             var url = 'http://api.petfinder.com/pet.get';
             var pid = window.location.search;
             var npid = pid.substring(4)
-       
-        $('.PetPhoto').empty();
-        $.ajax({
-            url: url,
-            jsonp: "callback",
-            dataType: "jsonp",
-        data: {
-            key: apiKey,
-          id: npid,
-            output: 'basic',
-            format: 'json'
-        },
-        success: function( response ) {
-           /// debugger;
+
+            $('.PetPhoto').empty();
+            $.ajax({
+                url: url,
+                jsonp: "callback",
+                dataType: "jsonp",
+                data: {
+                    key: apiKey,
+                    id: npid,
+                    output: 'basic',
+                    format: 'json'
+                },
+                success: function (response) {
+                    /// debugger;
 
 
-        console.log("getpet",response);
-        
-            var 
-            petName = response.petfinder.pet.name.$t
-            petId = response.petfinder.pet.id.$t
-            petPhoto = response.petfinder.pet.id.$t
-            petDescription = response.petfinder.pet.description.$t
-            
-            petPhotosize = response.petfinder.pet.media.photos.photo[2].$t
-            petcontactInfo =response.petfinder.pet.contact.phone.$t
-            petZip =response.petfinder.pet.contact.zip.$t
-           
-            
-          
-            $(".PetName").text(petName);
-            $(".PetId").text(petId);
-            $(".PetDescription").text(petDescription);
-            $(".PetZip").text(petZip);
-            $("#address").val(petZip);
-            $("#contactInfo").text(petcontactInfo);
-            
+                    console.log("getpet", response);
 
-             var pImg = $('<img />');
-            pImg.attr('src',petPhotosize).appendTo(".PetPhoto")
-    
-            console.log(response);
-            console.log(petcontactInfo);
-            console.log("petZip",petZip);
+                    var
+                        petName = response.petfinder.pet.name.$t
+                    petId = response.petfinder.pet.id.$t
+                    petPhoto = response.petfinder.pet.id.$t
+                    petDescription = response.petfinder.pet.description.$t
 
-        }
-        
-    });
-    })
-  
-    // Initialize and add the map
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 37.8716, lng: -122.2727}
-        });
-        var geocoder = new google.maps.Geocoder();
+                    petPhotosize = response.petfinder.pet.media.photos.photo[2].$t
+                    petcontactInfo = response.petfinder.pet.contact.phone.$t
+                    petZip = response.petfinder.pet.contact.zip.$t
 
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-      }
 
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
+
+                    $(".PetName").text(petName);
+                    $(".PetId").text(petId);
+                    $(".PetDescription").text(petDescription);
+                    $(".PetZip").text(petZip);
+                    $("#address").val(petZip);
+                    $("#contactInfo").text(petcontactInfo);
+
+
+                    var pImg = $('<img />');
+                    pImg.attr('src', petPhotosize).appendTo(".PetPhoto")
+
+                    console.log(response);
+                    console.log(petcontactInfo);
+                    console.log("petZip", petZip);
+
+                }
+
             });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-        </script>
+        })
+
+        // Initialize and add the map
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: { lat: 37.8716, lng: -122.2727 }
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
 
 
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOlwHRWvJOCKC2cR8VZXl-YQn-PRm1wjo&callback=initMap">
-        </script>
-
-    <!--  -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOlwHRWvJOCKC2cR8VZXl-YQn-PRm1wjo&callback=initMap">
+    </script>
 
     <!-- Dev Scripts -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script type='text/javascript' src="assets/javascript/firebase.js"></script>
 </body>
 
 </html>
