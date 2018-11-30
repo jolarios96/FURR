@@ -107,8 +107,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
-    var favArray = [];
+    //sets up an array to push favs into
+    var favArray = []
+    if(localStorage.favorties !== undefined){
+        favArray=JSON.parse(localStorage.favorties);
+    }
+    else{
+        favArray = []
+    }
     var petID;
+    
+    //inital variables to grab values from form above
     var area;
     var gender;
     var age;
@@ -117,9 +126,14 @@
     var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a';
     var pet = "dog";
     var url;
+        //offset variable here
     var counter = 0;
+
+        //non-functioning check for duplicates variable
     var dejaVu = false;
 
+    
+    //keeps highlighted option selected in dropdowns above
     $(document).on("click", ".dropdown-item", function(event) {
         event.preventDefault();
         var toucher = $(this).parent().children();
@@ -129,9 +143,12 @@
 
     })
 
+
+    //search for ptes
     $("#submit-input").on("click", function(event){
         event.preventDefault();
         
+        //grabs values from user input for API call
         area = $("#zipCode").val().trim();
         breed = $("#breed-input").val().trim();
         gender = $("#gender-input").children(".active").text();
@@ -152,6 +169,7 @@
             if(size==="Any"){
                 size="";
             }
+        //gets rid of the form div
         $('form').empty();
         console.log(area);
         console.log(breed);
@@ -167,12 +185,19 @@
     $("#approve").on("click", function(){
         favArray.push(petID);
         scramble();
+        localStorage.favorties = JSON.stringify(favArray);
+        localStorage.counter=counter;
+        // doOver();
+        
     })
 
     $("#disapprove").on("click", function() {
         scramble();
+        localStorage.counter = counter;
+        // doOver();
     })
 
+    //API call to petfinder API
     function scramble() {
         apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         url = 'http://api.petfinder.com/pet.find';
@@ -197,6 +222,7 @@
             }}).then(function (response){
                 console.log(response);
                 checkPets(response);
+                    // !BROKEN! check to see if we've seen this pet before
                 // if(!dejaVu){
                     $("#petImage").attr("src", response.petfinder.pets.pet.media.photos.photo[2].$t);
                     $("#petName").html(response.petfinder.pets.pet.name.$t);
@@ -210,16 +236,29 @@
                     counter ++;
                 // }
                 // else {
-                //     counter++;
+                //     while(dejaVu){
+                //         counter++;
+                //         checkPets(response);
+                //     }
                 // }
             })
     }
-
+    
+    //!Broken! checks to see if pets have been seen before
     function checkPets (response) {
         dejaVu = false;
         for (var i = 0; i<favArray.length; i ++){
             if (favArray[i]===response.petfinder.pets.pet.id.$t) {
                 dejaVu = true;
+            }
+        }
+    }
+
+    //!broken! goes to next result if already seen before
+    function doOver(){
+        if (dejaVu){
+            while(dejaVu){
+                scramble();
             }
         }
     }
