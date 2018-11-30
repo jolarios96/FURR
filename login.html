@@ -53,7 +53,7 @@
                 // localStorage.clear();
 
                 var uiConfig = {
-                    signInSuccessUrl: 'form.html', // redirect url
+                    signInSuccessUrl: 'home.html', // redirect url
                     signInOptions: [
                         // Leave the lines as is for the providers you want to offer your users.
                         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -87,7 +87,7 @@
                 newBtn.addClass('btn');
                 newBtn.addClass(' btn-primary');
                 newBtn.addClass(' btn-lg');
-                newBtn.text('Return to Main Page');
+                newBtn.text('Continue');
                 $('#redirect-btn').append(newBtn);
             };
 
@@ -100,7 +100,7 @@
         });
 
         $('#redirect-btn').on('click', function () {
-            window.location.href = "form.html"
+            window.location.href = "home.html"
         });
     </script>
 </body>
