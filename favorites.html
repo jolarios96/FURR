@@ -34,7 +34,7 @@
     <div class='col-md-4'>
     <div class="card" style="width: 350px;">
         <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-        <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
+        <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
         
         <div class="card-body">
             <!-- for pet info -->
@@ -67,7 +67,7 @@
     <div class='col-md-4'>
     <div class="card" style="width: 350px;">
             <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-            <img src="assets/imaages/placeholder.png" class="img-thumbnail place-holder" alt="just a placeholder">
+            <img src="assets/images/placeholder.png" class="img-thumbnail place-holder" alt="just a placeholder">
             
             <div class="card-body">
                 <!-- for pet info -->
@@ -99,11 +99,11 @@
     <div class='col-md-4'>
         <div class="card" style="width: 350px;">
                 <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-                <img src="assets/imaages/placeholder.png" class="place-holder" alt="just a placeholder">
+                <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
                 
                 <div class="card-body">
                     <!-- for pet info -->
-                    <div class='favePetInfo'>
+                    <!-- <div class='favePetInfo'> -->
                         <h5 class="favePetName">VoldeTort</h5>
                 
                         <div class='row'>
@@ -123,7 +123,7 @@
                         <div id='petDesc'>
                             <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -145,6 +145,55 @@
             messagingSenderId: "654872510123"
         };
         firebase.initializeApp(config);
+
+        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
+        var url = 'http://api.petfinder.com/pet.get';
+
+        function generateFavs () {
+            // for (var i = 0; i < favorites.length; i ++){
+                $.ajax({
+                    url: url,
+                    // method: "GET",
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    data: {
+                        key: apiKey,
+                        id: 43124076,
+                        // favorites[i],
+                        output: 'basic',
+                        format: 'json'
+                    }}).then(function(response) {
+                    console.log(response);
+                    makeCard(response);
+                })
+            // }
+
+        }
+
+        function makeCard (chicken) {
+            //retrieve and format data from API call
+            var petImg = $("<img>").attr("src", chicken.petfinder.pet.media.photos.photo[2].$t);
+            var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
+            var petDesc = $("<p>").text(chicken.response.pet.description.$t);
+            petDesc.attr("class", "card-text");
+            var petSex = $("<p>").text(chicken.petfinder.pet.sex.$t);
+            var petAge = $("<p>").text(chicken.petfinder.pet.age.$t);
+            var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
+            
+            //build card and push info into such
+            var cardDiv = $("<div>").attr("class", "card");
+            var cardBody = $("<div>").attr("class", "card-body");
+            var infoRow = $("<div>").attr("class", "row");
+            var col1 = $("<div>").attr("class", "col-md-3").append(petAge);
+            var col2 = $("<div>").attr("class", "col-md-3").append(petSex);
+            var col3 = $("<div>").attr("class", "col-md-6").append(petContact);
+            var cardBio = $("<div>").append(petDesc);
+            infoRow.append(col1, col2, col3);
+            cardBody.append(petName, infoRow, cardBio);
+            cardDiv.append(petImg, cardBody);
+        }
+
+        $(document).ready(generateFavs());
     </script>
     <!--  -->
 
