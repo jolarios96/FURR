@@ -16,6 +16,10 @@
     float: auto;
 }
 
+.homeContainer {
+    padding: 150px 500px 150px 500px;
+}
+
 .jumbotron {
     padding:0px;
     margin: 0px;
