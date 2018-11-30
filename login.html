@@ -21,8 +21,11 @@
     <div class="card mx-auto" style="width: 18rem;">
         <h3 id='sign-in-header' style='text-align: center'></h3>
         <div id="firebaseui-auth-container"></div>
-        <div id="logout-btn" class='mx-auto'></div>
-        <div id="redirect-btn" class='mx-auto'></div>
+
+        <div id='auth-btn-container'>
+            <div id="logout-btn" class='mx-auto'></div>
+            <div id="redirect-btn" class='mx-auto'></div>
+        </div>
     </div>
 
     <!-- SCRIPTS BELOW -->
@@ -90,6 +93,7 @@
 
         $('#logout-btn').on('click', function () {
             firebase.auth().signOut();
+            $('#auth-btn-container').children().empty();
         });
 
         $('#redirect-btn').on('click', function () {
