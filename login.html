@@ -21,6 +21,7 @@
     <div class="card mx-auto" style="width: 18rem;">
         <h3 id='sign-in-header' style='text-align: center'></h3>
         <div id="firebaseui-auth-container"></div>
+        <div id="logout-btn" class='mx-auto'></div>
         <div id="redirect-btn" class='mx-auto'></div>
     </div>
 
@@ -42,55 +43,60 @@
 
     <!-- login script -->
     <script type='text/javascript'>
-        initApp = function () {
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (!user) {
-                    $('#sign-in-header').text('Sign in Here');
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                $('#sign-in-header').text('Sign in Here');
 
-                    var uiConfig = {
-                        signInSuccessUrl: 'index.html', // redirect url
-                        signInOptions: [
-                            // Leave the lines as is for the providers you want to offer your users.
-                            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                            // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                            // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-                            // firebase.auth.GithubAuthProvider.PROVIDER_ID,
-                            firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                            // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-                            firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-                        ]
+                var uiConfig = {
+                    signInSuccessUrl: 'welcome.html', // redirect url
+                    signInOptions: [
+                        // Leave the lines as is for the providers you want to offer your users.
+                        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                        // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                        // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                        // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+                        firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+                    ]
 
-                    };
+                };
 
-                    // Initialize the FirebaseUI Widget using Firebase.
-                    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-                    // The start method will wait until the DOM is loaded.
-                    ui.start('#firebaseui-auth-container', uiConfig);
+                // Initialize the FirebaseUI Widget using Firebase.
+                var ui = new firebaseui.auth.AuthUI(firebase.auth());
+                // The start method will wait until the DOM is loaded.
+                ui.start('#firebaseui-auth-container', uiConfig);
 
-                }
-                else {
-                    $('#sign-in-header').text('Already Signed In!')
+            }
+            else {
+                $('#sign-in-header').text('Already Signed In!')
 
-                    var newBtn = $('<button>');
-                    newBtn.addClass('btn');
-                    newBtn.addClass(' btn-primary');
-                    newBtn.addClass(' btn-lg');
-                    newBtn.text('Return to Main Page');
-                    $('#redirect-btn').append(newBtn);
-                    // window.location.href = "welcome.html";
-                }
+                var newBtn = $('<button>');
+                newBtn.addClass('btn');
+                newBtn.addClass(' btn-primary');
+                newBtn.addClass(' btn-lg');
+                newBtn.text('Log Out');
+                $('#logout-btn').append(newBtn)
 
-            });
+                newBtn = $('<button>')
+                newBtn.addClass('btn');
+                newBtn.addClass(' btn-primary');
+                newBtn.addClass(' btn-lg');
+                newBtn.text('Return to Main Page');
+                $('#redirect-btn').append(newBtn);
+            };
 
-        };
+        });
+
+        $('#logout-btn').on('click', function () {
+            firebase.auth().signOut();
+        });
 
         $('#redirect-btn').on('click', function () {
             window.location.href = "welcome.html"
         });
 
-        window.addEventListener('load', function () {
-            initApp();
-        });
+
     </script>
     <!-- =========================================================================================================================== -->
 </body>
