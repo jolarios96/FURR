@@ -20,17 +20,13 @@
 <body>
 
     <div class="jumbotron">
-        <h1 class="display-4">Welcome to Furr.!</h1>
-        <p class="lead">It's like Tinder, except for Pets.</p>
-        <hr class="my-4">
-        <p>Are you looking for one true love? Do you believe in love at first sight? Well, look no fur-ther! Furr. is
-            designed to help you look for that purfect pet. Whether you're a dog purson, cat purson, or just a general
-            animal purson; we'll find the right companion fur you.</p>
+        <h1>Session Data:</h1>
 
-        <!-- Not sure what this button will do, but it's here if needed -->
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="login.html" role="button">Lets get started!</a>
-        </p>
+    </div>
+
+    <div class="jumbotron">
+        <h1>Firebase Data:</h1>
+
     </div>
 
 
@@ -44,9 +40,17 @@
     <!-- firebase initialization -->
     <script type='text/javascript' src='assets/javascript/firebase-config.js'></script>
 
-    <!-- console.log current user data, remove later -->
-    <script type='text/javascript' src='assets/javascript/firebase/debug-login-data.js'></script>
+    <!-- =========================================================================================================================== -->
 
+    <!-- Data Push into Local Storage -->
+    <script type='text/javascript' src='assets/javascript/firebase/push-data-session.js'></script>
+
+    <!-- Data Push into Firebase Storage -->
+    <script type='text/javascript' src='assets/javascript/firebase/push-data-firebase.js'></script>
+    <!-- =========================================================================================================================== -->
+    <script>
+        
+    </script>
 </body>
 
 </html>
