@@ -6,13 +6,13 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
 
         var name = user.displayName;
-        // var userId = user.uid;
+        var userID = user.uid;
         var favorites = [0, 1, 2];
         var offset = 0; // equals user's last offset
 
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('favorites', JSON.stringify(favorites));
         sessionStorage.setItem('offset', offset);
+        sessionStorage.setItem('userID', userID)
     };
-
 });
