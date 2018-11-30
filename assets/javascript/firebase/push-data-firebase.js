@@ -1,20 +1,18 @@
 // If the user is signed in
 // Push user's data to database
 
-// database ref
 var database = firebase.database();
-var userRef = database.ref().child('users');
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
 
         var name = user.displayName;
-        // var email = user.email;
-        var userID = user.uid;
+        var userId = user.uid;
 
-        var offset = sessionStorage.getItem(offset);
-        var favorites = (sessionStorage.getItem('favorites'));
+        // get data fromlocalStorage
+        var offset = sessionStorage.getItem('offset');
+        var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
 
         var userData = {
             name: name,
@@ -22,6 +20,16 @@ firebase.auth().onAuthStateChanged(function (user) {
             favorites: favorites, // was already stringified in sessionStorage
         };
 
-        userRef.child(userID).set(userData);
-    };
+        database.ref().child('/users/' + userId).set(userData);
+    }
+    else {
+        // else use localStorage for data
+        var name = user.displayName;
+        var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
+        var offset = sessionStorage.getItem('offset');
+
+       localStorage.setItem('name', name);
+       localStorage.setItem('favorites', favorites);
+       localStorage.setItem('offset', 0);
+    }
 });
