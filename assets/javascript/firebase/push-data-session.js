@@ -7,11 +7,11 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         var name = user.displayName;
         var userID = user.uid;
-        var favorites = [0, 1, 2];
-        var offset = 0; // equals user's last offset
+        var favorites = sessionStorage.getItem(favArray);
+        var offset = sessionStorage.getItem(offset); // equals user's last offset
 
         sessionStorage.setItem('name', name);
-        sessionStorage.setItem('favorites', JSON.stringify(favorites));
+        sessionStorage.setItem('favArray', JSON.stringify(favorites));
         sessionStorage.setItem('offset', offset);
         sessionStorage.setItem('userID', userID)
     };

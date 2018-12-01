@@ -53,8 +53,7 @@
                 // localStorage.clear();
 
                 var uiConfig = {
-                    signInSuccessURL: 'storage-test.html',
-                    // signInSuccessUrl: 'welcome.html', // redirect url
+                    signInSuccessUrl: 'home.html', // redirect url
                     signInOptions: [
                         // Leave the lines as is for the providers you want to offer your users.
                         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -88,7 +87,7 @@
                 newBtn.addClass('btn');
                 newBtn.addClass(' btn-primary');
                 newBtn.addClass(' btn-lg');
-                newBtn.text('Return to Main Page');
+                newBtn.text('Continue');
                 $('#redirect-btn').append(newBtn);
             };
 
@@ -97,10 +96,11 @@
         $('#logout-btn').on('click', function () {
             firebase.auth().signOut();
             $('#auth-btn-container').children().empty();
+            window.location.href = "index.html"
         });
 
         $('#redirect-btn').on('click', function () {
-            window.location.href = "welcome.html"
+            window.location.href = "home.html"
         });
     </script>
 </body>
