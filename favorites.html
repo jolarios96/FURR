@@ -177,8 +177,7 @@
             var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
             
             //build card and push info into such
-                var row = $("<div>").attr("class", "row");
-                    for(var i=0; i<3; i++){
+                    // for(var i=0; i<3; i++){
                         var cardDiv = $("<div>").attr("class", "card");
                         var cardBody = $("<div>").attr("class", "card-body");
                         var infoRow = $("<div>").attr("class", "row");
@@ -189,12 +188,11 @@
                         infoRow.append(col1, col2, col3);
                         cardBody.append(petName, infoRow, cardBio);
                         cardDiv.append(petImg, cardBody);
-                        var column = $("<div>").attr("class", "col-md-4");
+                        var column = $("<div>").attr("class", "col-md-4 float-left");
                         column.append(cardDiv)
-                        row.append(column);
-                    }
+                    // }
             //appends card to favorites display
-            $("#fav-body").append(row);
+            $("#fav-body").append(column);
         }
         $(document).ready(generateFavs());
 
