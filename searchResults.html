@@ -23,74 +23,25 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-bran" href="#" id='furrTitle'><h3>Furr.</h3></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Breed</a>
-                </li>
-                <li class="nav-item active">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true"           aria-expanded="false">
-                            Gender
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
-                            <a class="dropdown-item active" href="#">Any</a>
-                            <a class="dropdown-item" href="#">Male</a>
-                            <a class="dropdown-item" href="#">Female</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
-                            Age
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
-                            <a class="dropdown-item active" href="#">Any</a>
-                            <a class="dropdown-item" href="#">Baby</a>
-                            <a class="dropdown-item" href="#">Young</a>
-                            <a class="dropdown-item" href="#">Adult</a>
-                            <a class="dropdown-item" href="#">Senior</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Size
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
-                            <a class="dropdown-item active" href="#">Any</a>
-                                <a class="dropdown-item" href="#">Small</a>
-                                <a class="dropdown-item" href="#">Medium</a>
-                                <a class="dropdown-item" href="#">Large</a>
-                                <a class="dropdown-item" href="#">Extra-Large</a>
-                        </div>
-                        <br>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <a class="navbar-brand" href="#" id='furrTitle'>Furr .</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href='favorites.html'>favorites <span class="sr-only">(current)</span></a>
+                    </li>
+                            
+                    <li class="nav-item">
+                        <a class="nav-link" href='home.html'>search</a>
+                    </li>
+                </ul> 
+                <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+            </div>
     </nav>
-
-<<<<<<< HEAD
-    <div class="card" style="width: 400px;">
-        <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-        <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
         
-        <div class="card-body">
-            <!-- for pet info -->
-            <div class='petInfo'>
-                <h5 class="petName">Fido</h5>
-        
-                <div class='row'>
-                    <div class='col-md-3'>
-                        <p id='petAge'>3 yo</p>
-=======
+    
         <div class="card" style="width: 350px;">
             <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
             <img src="assets/images/placeholder.png" class="img-thumbnail place-holder" alt="just a placeholder">
@@ -111,7 +62,6 @@
                         <div class='col-md-6'>
                                 <p id='faveContactInfo'>randomDopeEmail@lit.com</p>
                         </div>
->>>>>>> 236ab06a9e58d1f09a1634c65dc39c88ac0cc362
                     </div>
                 
                     <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->

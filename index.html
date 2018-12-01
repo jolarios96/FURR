@@ -21,12 +21,23 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1" id='furrTitle'>Furr .</span>
-        <button type="button" class="btn btn-secondary btn-sm" href='favorites.html' id='faveBtn'>favorites</button> <!-- This button doesn't feel like redirecting to the proper html file-->
-        <button type="button" class="btn btn-secondary btn-sm" href='home.html' id='faveBtn'>search</button> <!-- Placeholder for potential things -->
-        <button type="button" class="btn btn-secondary btn-sm" href='favorites.html' id='faveBtn'>cats</button> <!-- Placeholder for potential things -->
-        <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#" id='furrTitle'>Furr .</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href='favorites.html'>favorites <span class="sr-only">(current)</span></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href='home.html'>search</a>
+                    </li>
+                </ul> 
+                <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+            </div>
     </nav>
 
 <div class='indexWrapper'>
