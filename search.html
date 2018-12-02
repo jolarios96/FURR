@@ -23,20 +23,21 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">            
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href='search.html'>search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='favorites.html'>favorites</a>
                 </li>
-            </ul> 
-                <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+            </ul>
+            <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
         </div>
     </nav>
 
@@ -44,53 +45,56 @@
         <form>
             <div class="form-group">
                 <label for="zipCode">Zip Code</label>
-                  <input type="zip" class="form-control" id="zipCode" placeholder="Enter Zip Code">
+                <input type="zip" class="form-control" id="zipCode" placeholder="Enter Zip Code">
             </div>
-                    
+
             <div class="form-group">
                 <label for="breed-input">Breed</label>
                 <input type="text" class="form-control" placeholder="Optional" id="breed-input">
             </div>
-                    
+
             <div class="col-md-6">
                 <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Gender
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
-                                <a class="dropdown-item active" href="#">Any</a>
-                                <a class="dropdown-item" href="#">Male</a>
-                                <a class="dropdown-item" href="#">Female</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Age
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
-                                <a class="dropdown-item active" href="#">Any</a>
-                                <a class="dropdown-item" href="#">Baby</a>
-                                <a class="dropdown-item" href="#">Young</a>
-                                <a class="dropdown-item" href="#">Adult</a>
-                                <a class="dropdown-item" href="#">Senior</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Size
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
-                                <a class="dropdown-item active" href="#">Any</a>
-                                <a class="dropdown-item" href="#">Small</a>
-                                <a class="dropdown-item" href="#">Medium</a>
-                                <a class="dropdown-item" href="#">Large</a>
-                                <a class="dropdown-item" href="#">Extra-Large</a>
-                            </div>
-                            <br>
-                        </div>
-                        <button type="submit" class="btn btn-secondary" id="submit-input">Find me sum Furr.!</button>
+                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gender
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
+                        <a class="dropdown-item active" href="#">Any</a>
+                        <a class="dropdown-item" href="#">Male</a>
+                        <a class="dropdown-item" href="#">Female</a>
                     </div>
-                </form>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Age
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
+                        <a class="dropdown-item active" href="#">Any</a>
+                        <a class="dropdown-item" href="#">Baby</a>
+                        <a class="dropdown-item" href="#">Young</a>
+                        <a class="dropdown-item" href="#">Adult</a>
+                        <a class="dropdown-item" href="#">Senior</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Size
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
+                        <a class="dropdown-item active" href="#">Any</a>
+                        <a class="dropdown-item" href="#">Small</a>
+                        <a class="dropdown-item" href="#">Medium</a>
+                        <a class="dropdown-item" href="#">Large</a>
+                        <a class="dropdown-item" href="#">Extra-Large</a>
+                    </div>
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-secondary" id="submit-input">Find me sum Furr.!</button>
+            </div>
+        </form>
     </div>
 
 
@@ -101,10 +105,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
-    <!-- =========================================================================================================================== -->
+    <!-- initialize firebase -->
+    <script src='assets/javascript/firebase-config.js'></script>
 
-    <!-- Dev Scripts -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- renders login btn to navbar -->
+    <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
 </body>
 

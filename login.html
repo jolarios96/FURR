@@ -46,6 +46,10 @@
 
     <!-- login script -->
     <script type='text/javascript'>
+        if (!sessionStorage.getItem('cachedPage')) {
+           sessionStorage.setItem('cachedPage', 'index.html');
+        };
+
         firebase.auth().onAuthStateChanged(function (user) {
             if (!user) {
                 $('#sign-in-header').text('Sign in Here');
@@ -53,7 +57,7 @@
                 // localStorage.clear();
 
                 var uiConfig = {
-                    signInSuccessUrl: 'home.html', // redirect url
+                    signInSuccessUrl: 'index.html', // redirect url
                     signInOptions: [
                         // Leave the lines as is for the providers you want to offer your users.
                         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -96,11 +100,21 @@
         $('#logout-btn').on('click', function () {
             firebase.auth().signOut();
             $('#auth-btn-container').children().empty();
-            window.location.href = "index.html"
+            if (sessionStorage.getItem('cachedPage')) {
+                window.location.href = sessionStorage.getItem('cachedPage');
+
+            } else {
+                window.location.href = "index.html"
+            };
         });
 
         $('#redirect-btn').on('click', function () {
-            window.location.href = "home.html"
+            if (sessionStorage.getItem('cachedPage')){
+                window.location.href = sessionStorage.getItem('cachedPage');
+
+            } else {
+                window.location.href = "index.html"
+            };
         });
     </script>
 </body>
