@@ -25,7 +25,6 @@
         <hr>
         <div id="firebaseui-auth-container"></div>
 
-        <div id="logout-btn" class='mx-auto'></div>
         <div id="redirect-btn" class='mx-auto'>
             <button class='btn btn-primary btn-lg mt-2 mx-auto'>Return</button>
         </div>
@@ -96,17 +95,6 @@
 
         // On-Click Events
         // ===========================================================================================================================
-
-        $('#logout-btn').on('click', function () {
-            firebase.auth().signOut();
-            $('#logout-btn').remove();
-            if (sessionStorage.getItem('cachedPage')) {
-                window.location.href = sessionStorage.getItem('cachedPage');
-
-            } else {
-                window.location.href = "index.html"
-            };
-        });
 
         $('#redirect-btn').on('click', function () {
             if (sessionStorage.getItem('cachedPage')) {
