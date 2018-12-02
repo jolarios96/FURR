@@ -12,6 +12,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     var childData = childSnapshot.val();
                     // if current user's id matches the snapshot's data key
                     if (user.uid === key) {
+                        // store server data in localStorage
                         localStorage.setItem('name', childData.name);
                         localStorage.setItem('favArray', JSON.stringify(childData.favorites));
                         localStorage.setItem('offset',  childData.offset);
