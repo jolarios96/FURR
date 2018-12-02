@@ -1,5 +1,5 @@
 firebase.auth().onAuthStateChanged(function (user) {
-    $('.tmp-container').remove();    
+    $('.tmp-container').remove();
     // is user logged in?
     if (!user) {
         //render login link if not logged in
@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 $('<a>').text('logout').addClass('nav-link').attr('id', 'logout-link').attr('href', 'index.html')
             )
         )
-        
+
         // Is User Anonymous?
         if (user.isAnonymous) {
             // prepend -  Guest  - on header as visual sign-in confirmation
@@ -44,11 +44,21 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
 
     $('#logout-link').on('click', function () {
-        if (user.isAnonymous){
+        if (user.isAnonymous) {
             // removes data from database of Guest user
             database.ref().child('/users/' + user.uid).remove();
-        };
-        
+        } else {
+            var userData = {
+                name: user.displayName,
+                offset: localStorage.getItem('offset'),
+                favorites: localStorage.getItem('favArray'), // no stringify, was initially declared as string
+                userID: user.uid,
+            };
+
+            // send data to database
+            database.ref().child('/users/' + user.uid).set(userData);
+        }
+
         // sign out user
         firebase.auth().signOut();
 
@@ -60,7 +70,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         // removes login/logout items from nav to prevent
         // render problems in cross-tab sessions
-        $('.tmp-container').remove();    
+        $('.tmp-container').remove();
 
         // re-renders Sign In header item
         $('#navbarSupportedContent > ul').prepend(
