@@ -11,17 +11,15 @@ firebase.auth().onAuthStateChanged(function (user) {
         var offset = localStorage.getItem('offset');
         var favorites = localStorage.getItem('favorites'); // was already stringified in localStorage
 
-        // get data from sessionStorage
-        // var offset = sessionStorage.getItem('offset');
-        // var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
-
+        // compile data into object
         var userData = {
             name: user.displayName,
             offset: offset,
-            favorites: favorites, // was already stringified in local/session Storage
+            favorites: favorites, // no stringify, was initially declared as string
             userID: user.uid,
         };
 
+        // send data to database
         database.ref().child('/users/' + user.uid).set(userData);
-    }
+    };
 });

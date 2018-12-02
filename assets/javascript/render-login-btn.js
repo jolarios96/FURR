@@ -31,8 +31,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                     $('<a>').text('- ' + user.displayName + ' -').addClass('nav-link')
                 )
             )
-        }
-    }
+        };
+    };
 
     // On-Click Events
     var database = firebase.database();
@@ -45,7 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         if (user.isAnonymous){
             // removes data from database of Guest user
             database.ref().child('/users/' + user.uid).remove();
-        }
+        };
         
         // sign out user
         firebase.auth().signOut();

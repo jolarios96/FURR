@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
                         // remember that boolean? (line 12)
                         existence = true;
-                    }
+                    };
                 });
 
                 // use that boolean!
@@ -60,7 +60,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
                     // send data to database
                     database.ref().child('/users/' + user.uid).set(userData);
-                }
+                };
             });
     };
 
