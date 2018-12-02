@@ -1,5 +1,6 @@
 firebase.auth().onAuthStateChanged(function (user) {
 
+    // is user logged in?
     if (!user) {
         //render login link if not logged in
         $('#navbarSupportedContent > ul').prepend(
@@ -14,9 +15,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                 $('<a>').text('logout').addClass('nav-link').attr('id', 'logoff-link').attr('href', 'index.html')
             )
         )
-
+        
+        // Is User Anonymous?
         if (user.isAnonymous) {
-            // and if user isn't anonymous
+            // is user anonymous? (guest)
             $('#navbarSupportedContent > ul').prepend(
                 $('<li>').addClass('nav-item').append(
                     $('<a>').text('- Guest -').addClass('nav-link')
@@ -33,11 +35,19 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 
     // On-Click Events
+    var database = firebase.database();
+
     $('#login-link').on('click', function () {
         window.location.href = sessionStorage.setItem('cachedPage', window.location.href);
     });
 
     $('#logoff-link').on('click', function () {
+
+        if (user.isAnonymous){
+            // removes data from database if anonymous user
+            database.ref().child('/users/' + user.uid).remove();
+        }
+        
         firebase.auth().signOut();
         sessionStorage.clear();
         localStorage.clear();
