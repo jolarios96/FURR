@@ -6,12 +6,14 @@ firebase.auth().onAuthStateChanged(function (user) {
         var query = firebase.database().ref("users").orderByKey();
         query.once("value")
             .then(function (snapshot) {
+                var existence;
                 snapshot.forEach(function (childSnapshot) {
                     var key = childSnapshot.key;
 
                     // childData will be the actual contents of the child
                     var childData = childSnapshot.val();
                     // if current user's id matches the snapshot's data key
+
 
                     if (user.uid === key) {
                         // store server data in localStorage
@@ -27,8 +29,31 @@ firebase.auth().onAuthStateChanged(function (user) {
                         console.log('favorites: ' + childData.favorites);
                         console.log('offset: ' + childData.offset);
 
+                        existence = true;
                     }
+
                 });
+                if (!existence) {
+                    // user has no data.
+
+                    // set initial data locally
+                    var offset = 0;
+                    var favorites = '[]';
+
+                    localStorage.setItem('name', user.displayName);
+                    // localStorage.setItem('favArray', childData.favorites);
+                    localStorage.setItem('offset', 0);
+                    localStorage.setItem('userID', user.uid);
+
+                    var userData = {
+                        name: user.displayName,
+                        offset: offset,
+                        favorites: favorites, // was already stringified in local/session Storage
+                        userID: user.uid,
+                    };
+
+                    database.ref().child('/users/' + user.uid).set(userData);
+                }
             });
     };
 
