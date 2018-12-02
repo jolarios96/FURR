@@ -54,8 +54,6 @@
         firebase.auth().onAuthStateChanged(function (user) {
             if (!user) {
                 $('#sign-in-header').text('Sign in Here');
-                // clear data before sign-in
-                // localStorage.clear();
 
                 var uiConfig = {
                     signInSuccessUrl: 'index.html', // redirect url
