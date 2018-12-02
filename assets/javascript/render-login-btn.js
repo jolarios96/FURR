@@ -18,14 +18,15 @@ firebase.auth().onAuthStateChanged(function (user) {
         
         // Is User Anonymous?
         if (user.isAnonymous) {
-            // is user anonymous? (guest)
+            // prepend -  Guest  - on header as visual sign-in confirmation
             $('#navbarSupportedContent > ul').prepend(
                 $('<li>').addClass('nav-item tmp-container').append(
                     $('<a>').text('- Guest -').addClass('nav-link')
                 )
             )
         } else {
-            //  else, user is not a guest
+            //  else, user has account
+            //  prepend user's display name as visual sign-in confirmation
             $('#navbarSupportedContent > ul').prepend(
                 $('<li>').addClass('nav-item tmp-container').append(
                     $('<a>').text('- ' + user.displayName + ' -').addClass('nav-link')
@@ -38,6 +39,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     var database = firebase.database();
 
     $('#login-link').on('click', function () {
+        // change the url to the last page saved to cachedPage
         window.location.href = sessionStorage.setItem('cachedPage', window.location.href);
     });
 
