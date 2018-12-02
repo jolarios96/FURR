@@ -49,6 +49,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     localStorage.setItem('offset', 0);
                     localStorage.setItem('userID', user.uid);
 
+                    // compile data into object
                     var userData = {
                         name: user.displayName,
                         offset: offset,
@@ -56,7 +57,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                         userID: user.uid,
                     };
 
-                    // set userData in this directory in firebase
+                    // send data to database
                     database.ref().child('/users/' + user.uid).set(userData);
                 }
             });
