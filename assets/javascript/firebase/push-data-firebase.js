@@ -8,13 +8,16 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
 
         // get data fromlocalStorage
-        var offset = sessionStorage.getItem('offset');
-        var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
+        var offset = localStorage.getItem('offset');
+        var favorites = localStorage.getItem('favorites'); // was already stringified in localStorage
+
+        // var offset = sessionStorage.getItem('offset');
+        // var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
 
         var userData = {
             name: user.displayName,
             offset: offset,
-            favorites: favorites, // was already stringified in sessionStorage
+            favorites: favorites, // was already stringified in local/session Storage
             userID: user.uid,
         };
 
