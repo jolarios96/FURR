@@ -3,11 +3,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (!user) {
         $('#navbarSupportedContent > ul').prepend(
             $('<li>').addClass('nav-item').append(
-                $('<a>').text('- Login Here -').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
+                $('<a>').text('- Sign In -').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
             )
         )
     } else {
-        $('#navbarSupportedContent > ul').prepend(
+        $('#navbarSupportedContent > ul').append(
             $('<li>').addClass('nav-item').append(
                 $('<a>').text('logout').addClass('nav-link').attr('id', 'logoff-link').attr('href', 'index.html')
             )
@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         firebase.auth().signOut();
         $('#navbarSupportedContent > ul').prepend(
             $('<li>').addClass('nav-item').append(
-                $('<a>').text('- Login Here-').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
+                $('<a>').text('- Sign In -').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
             )
         )
     });
