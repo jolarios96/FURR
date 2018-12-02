@@ -3,18 +3,22 @@ var database = firebase.database();
 firebase.auth().onAuthStateChanged(function (user) {
 
     if (user) {
+        // user logged in
         var query = firebase.database().ref("users").orderByKey();
         query.once("value")
             .then(function (snapshot) {
+
+                // boolean for later
                 var existence;
+
                 snapshot.forEach(function (childSnapshot) {
+                    // set key = 'key' of object containing data
                     var key = childSnapshot.key;
 
                     // childData will be the actual contents of the child
                     var childData = childSnapshot.val();
+
                     // if current user's id matches the snapshot's data key
-
-
                     if (user.uid === key) {
                         // store server data in localStorage
                         // NOTE: array data from server is already stringified
@@ -41,17 +45,18 @@ firebase.auth().onAuthStateChanged(function (user) {
                     var favorites = '[]';
 
                     localStorage.setItem('name', user.displayName);
-                    // localStorage.setItem('favArray', childData.favorites);
+                    localStorage.setItem('favArray', favorites); // no stringify, was initially declared as string
                     localStorage.setItem('offset', 0);
                     localStorage.setItem('userID', user.uid);
 
                     var userData = {
                         name: user.displayName,
                         offset: offset,
-                        favorites: favorites, // was already stringified in local/session Storage
+                        favorites: favorites, // no stringify, was initially declared as string
                         userID: user.uid,
                     };
 
+                    // set userData in this directory in firebase
                     database.ref().child('/users/' + user.uid).set(userData);
                 }
             });
