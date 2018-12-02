@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         // else render logout link
         $('#navbarSupportedContent > ul').append(
             $('<li>').addClass('nav-item tmp-container').append(
-                $('<a>').text('logout').addClass('nav-link').attr('id', 'logoff-link').attr('href', 'index.html')
+                $('<a>').text('logout').addClass('nav-link').attr('id', 'logout-link').attr('href', 'index.html')
             )
         )
         
@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         window.location.href = sessionStorage.setItem('cachedPage', window.location.href);
     });
 
-    $('#logoff-link').on('click', function () {
+    $('#logout-link').on('click', function () {
         if (user.isAnonymous){
             // removes data from database if anonymous user
             database.ref().child('/users/' + user.uid).remove();
