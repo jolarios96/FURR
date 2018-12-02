@@ -36,7 +36,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     $('#logoff-link').on('click', function () {
         firebase.auth().signOut();
-        $('#navbarSupportedContent > ul').preend(
+        $('#navbarSupportedContent > ul').prepend(
             $('<li>').addClass('nav-item').append(
                 $('<a>').text('- Login Here-').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
             )
