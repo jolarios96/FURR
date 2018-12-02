@@ -7,10 +7,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
 
-        // get data fromlocalStorage
+        // get data from localStorage
         var offset = localStorage.getItem('offset');
         var favorites = localStorage.getItem('favorites'); // was already stringified in localStorage
 
+        // get data from sessionStorage
         // var offset = sessionStorage.getItem('offset');
         // var favorites = sessionStorage.getItem('favorites'); // was already stringified in sessionStorage
 
