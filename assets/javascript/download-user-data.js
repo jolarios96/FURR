@@ -33,13 +33,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                         console.log('favorites: ' + childData.favorites);
                         console.log('offset: ' + childData.offset);
 
+                        // remember that boolean? (line 12)
                         existence = true;
                     }
-
                 });
+
+                // use that boolean!
                 if (!existence) {
                     // user has no data.
-
                     // set initial data locally
                     var offset = 0;
                     var favorites = '[]';
