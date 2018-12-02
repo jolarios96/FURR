@@ -28,6 +28,8 @@ firebase.auth().onAuthStateChanged(function (user) {
             )
         }
     }
+    
+    // On-Click Events
     $('#login-link').on('click', function () {
         window.location.href = sessionStorage.setItem('cachedPage', window.location.href);
     });
