@@ -43,19 +43,28 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     $('#logout-link').on('click', function () {
         if (user.isAnonymous){
-            // removes data from database if anonymous user
+            // removes data from database of Guest user
             database.ref().child('/users/' + user.uid).remove();
         }
         
+        // sign out user
         firebase.auth().signOut();
+
+        // clear session storage of user data
         sessionStorage.clear();
+
+        // clear local storage of user data
         localStorage.clear();
 
+        // removes login/logout items from nav to prevent
+        // render problems in cross-tab sessions
+        $('.tmp-container').remove();    
+
+        // re-renders Sign In header item
         $('#navbarSupportedContent > ul').prepend(
             $('<li>').addClass('nav-item').append(
                 $('<a>').text('- Sign In -').addClass('nav-link').attr('id', 'login-link').attr('href', 'login.html')
             )
         );
-        $('.tmp-container').remove();    
     });
 });
