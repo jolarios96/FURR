@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         localStorage.setItem('name', name);
         localStorage.setItem('favArray', JSON.stringify(favorites));
         localStorage.setItem('offset', offset);
-        localStorage.setItem('userID', userID)
+        localStorage.setItem('userID', userID);
 
         // sessionStorage.setItem('name', name);
         // sessionStorage.setItem('favArray', JSON.stringify(favorites));
