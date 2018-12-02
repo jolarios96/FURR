@@ -21,5 +21,3 @@ firebase.auth().onAuthStateChanged(function (user) {
         database.ref().child('/users/' + user.uid).set(userData);
     }
 });
-
-
