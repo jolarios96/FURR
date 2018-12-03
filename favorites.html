@@ -91,25 +91,7 @@
 
         }
 
-        function makeCard(response) {
-            var petImg;
-            var petName;
-            var petSex;
-            // var petAge;
-
-            if (response.petfinder.pets.pet[offset].media.photos) {
-                $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
-            } else {
-                $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=No+Img+Available');
-            };
-            if (response.petfinder.pets.pet[offset].description.$t) {
-                $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
-            } else {
-                $("#pet-bio").html('No description');
-            };
-
-            $("#pet-name").html(response.petfinder.pets.pet[offset].name.$t);
-
+        function makeCard(chicken) {
             //retrieve and format data from API call
             var petImg = $("<img>").attr({ "src": chicken.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px" });
             var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
