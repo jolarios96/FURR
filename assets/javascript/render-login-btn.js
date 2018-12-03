@@ -50,7 +50,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         } else {
             var userData = {
                 name: user.displayName,
-                offset: localStorage.getItem('offset'),
+                // offset: localStorage.getItem('offset'),
                 favorites: localStorage.getItem('favArray'), // no stringify, was initially declared as string
                 userID: user.uid,
             };

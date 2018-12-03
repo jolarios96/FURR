@@ -127,9 +127,18 @@
             var gender = $('#gender-input').val().trim();
             var age = $('#age-input').val().trim();
             var size = $('#size-input').val().trim();
-
             // var breed = $('#breed-input').val().trim();
             var breed = 'unimplimented'
+
+            if (size === 'Any') {
+                size = '';
+            }
+            if (gender === 'Any') {
+                gender = '';
+            }
+            if (age === 'Any') {
+                age = '';
+            }
 
             console.log('zip: ' + zip);
             console.log('gender: ' + gender);
@@ -145,7 +154,7 @@
 
                 window.location.href = "results.html";
             } else {
-                
+
             }
 
         });

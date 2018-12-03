@@ -83,6 +83,7 @@
 
     <!-- Main Page App -->
     <script>
+        // apiKey = '184349ea5895fe80076bbe50da0bbc93'
         apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         var url = 'http://api.petfinder.com/pet.find';
         var offset = localStorage.getItem('offset');
@@ -123,15 +124,26 @@
                     format: 'json'
                 }
             }).then(function (response) {
-                console.log(response)
+                console.log(response);
+                
+                if (response.petfinder.pets.pet[offset]) {
+                    if (response.petfinder.pets.pet[offset].media.photos) {
+                        $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
+                    } else {
+                        $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=No+Img+Available');
+                    }
+                    if (response.petfinder.pets.pet[offset].description.$t){
+                        $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
+                    } else {
+                        $("#pet-bio").html('No description');
+                    }
 
-                if (response.petfinder.pets) {
-                    $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
                     $("#pet-name").html(response.petfinder.pets.pet[offset].name.$t);
-                    $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
+
                     petID = response.petfinder.pets.pet[offset].id.$t;
+
                 } else {
-                    $("#pet-image").attr("src", 'https://via.placeholder.com/360x660.png?text=');
+                    $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=');
                     $("#pet-name").html('End of List :(');
                 }
 
@@ -140,7 +152,8 @@
             $('#favorite-btn').on('click', function () {
                 // save to local
                 var tmp = JSON.parse(localStorage.getItem('favArray'));
-
+                
+                // if same pet isn't already in array
                 if (!tmp.includes(petID)) {
                     tmp.push(petID);
                     localStorage.setItem('favArray', JSON.stringify(tmp));

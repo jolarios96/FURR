@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     // compile data into object
                     var userData = {
                         name: user.displayName,
-                        offset: offset,
+                        // offset: offset,
                         favorites: favorites, // no stringify, was initially declared as string
                         userID: user.uid,
                     };
