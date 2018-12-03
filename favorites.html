@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .card-edit {
-            margin: auto;
+            margin: 10px auto;
             width: 55%;
             padding: 10px;
             background-color: #f1f1f1;
@@ -31,13 +31,30 @@
             float: right;
             width: 50%;
             padding: 0 20px;
+            word-wrap: break-word;
         }
         .fav-img{
             float: left;
         }
         .map-link{
             width: 100%;
+
+            margin-top: 5px;
+            word-wrap: break-word;
+            min-width: 110px;
         }
+        @media only screen and (max-width: 800px) {
+            .fav-img{
+                width: 100% !important;
+                float: none;
+            }
+            .card-body-edit{
+                margin-top: 5px;
+                width: auto;
+                float: none;
+            }
+
+        }   
     </style>
 </head>
 
@@ -130,12 +147,12 @@
             //build card and push info into such
             var cardDiv = $("<div>").addClass('card-edit clearfix');
             var cardBody = $("<div>").addClass('card-body-edit')
-                
+
             var mapLink = $('<button>').addClass('btn btn-secondary map-link').text('Map Link!');
 
-            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail, mapLink);
+            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
 
-            cardDiv.append(petImg, cardBody);
+            cardDiv.append(petImg, cardBody, mapLink);
             $("#fav-body").append(cardDiv);
         }
         $(document).ready(generateFavs());
