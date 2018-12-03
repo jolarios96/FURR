@@ -47,31 +47,28 @@
                 <label for="zip-code">Zip Code</label>
                 <input type="zip" class="form-control" id="zip-code-input" placeholder="Enter Zip Code">
             </div>
-            <select class="form-control">
-                <option>Gender</option>
+            <label for='gender-input'>Example select</label>
+            <select id='gender-input' class="form-control">
                 <option>Any<option>
                 <option>Male<option>
                 <option>Female<option>
             </select>
-            <br>
-            <select class="form-control">
-                <option>Age</option>
+            <label for='age-input'>Example select</label>
+            <select id='age-input' class="form-control">
                 <option>Any<option>
                 <option>Baby<option>
                 <option>Young<option>
                 <option>Adult<option>
                 <option>Senior<option>
             </select>
-            <br>
-            <select class="form-control">
-                <option>Size</option>
+            <label for='size-input'>Example select</label>
+            <select id='size-input' class="form-control">
                 <option>Any<option>
                 <option>Small<option>
                 <option>Medium<option>
                 <option>Large<option>
                 <option>Extra-Large<option>
             </select>
-            <br>
             <div class="form-group">
                 <label for="breed-input">Optional</label>
                 <input type="text" class="form-control" placeholder="Breed" id="breed-input">
@@ -117,12 +114,25 @@
         $('.drop-size').on('click', function () {
             $('.drop-size').removeClass('active')
             $(this).addClass('active')
-        })
+        });
 
         // on-click submit
-        $('#train-submit-btn').on('click', function (event) {
+        $('#submit-input').on('click', function (event) {
+            event.preventDefault();
+            var zip = $('#zip-code-input').val().trim();
+            var gender = $('#gender-input').val().trim();
+            var age = $('#age-input').val().trim();
+            var size = $('#size-input').val().trim();
+            // var breed = $('#breed-input').val().trim();
+            var breed = 'unimplimented'
 
-        })
+            
+            console.log('zip: ' + zip);
+            console.log('gender: ' + gender);
+            console.log('age: ' + age);
+            console.log('size: ' + size);
+            console.log('breed: ' + breed);
+        });
     </script>
 </body>
 
