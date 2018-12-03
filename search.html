@@ -44,56 +44,38 @@
     <div class="homeWrapper">
         <form>
             <div class="form-group">
-                <label for="zipCode">Zip Code</label>
-                <input type="zip" class="form-control" id="zipCode" placeholder="Enter Zip Code">
+                <label for="zip-code">Zip Code</label>
+                <input type="zip" class="form-control" id="zip-code-input" placeholder="Required">
             </div>
-
-            <div class="form-group">
-                <label for="breed-input">Breed</label>
-                <input type="text" class="form-control" placeholder="Optional" id="breed-input">
-            </div>
-
-            <div class="col-md-6">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Gender
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
-                        <a class="dropdown-item drop-gender" href="#">Any</a>
-                        <a class="dropdown-item drop-gender" href="#">Male</a>
-                        <a class="dropdown-item drop-gender" href="#">Female</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Age
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
-                        <a class="dropdown-item drop-age" href="#">Any</a>
-                        <a class="dropdown-item drop-age" href="#">Baby</a>
-                        <a class="dropdown-item drop-age" href="#">Young</a>
-                        <a class="dropdown-item drop-age" href="#">Adult</a>
-                        <a class="dropdown-item drop-age" href="#">Senior</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Size
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
-                        <a class="dropdown-item drop-size" href="#">Any</a>
-                        <a class="dropdown-item drop-size" href="#">Small</a>
-                        <a class="dropdown-item drop-size" href="#">Medium</a>
-                        <a class="dropdown-item drop-size" href="#">Large</a>
-                        <a class="dropdown-item drop-size" href="#">Extra-Large</a>
-                    </div>
-                    <br>
-                </div>
-                <button type="submit" class="btn btn-secondary" id="submit-input">Find me sum Furr.!</button>
-            </div>
+            <label for='gender-input'>Gender</label>
+            <select id='gender-input' class="form-control">
+                <option>Any<option>
+                <option>Male<option>
+                <option>Female<option>
+            </select>
+            <label for='age-input'>Age</label>
+            <select id='age-input' class="form-control">
+                <option>Any<option>
+                <option>Baby<option>
+                <option>Young<option>
+                <option>Adult<option>
+                <option>Senior<option>
+            </select>
+            <label for='size-input'>Size</label>
+            <select id='size-input' class="form-control">
+                <option>Any<option>
+                <option>Small<option>
+                <option>Medium<option>
+                <option>Large<option>
+                <option>Extra-Large<option>
+            </select>
+            <!-- currently unimplimented -->
+            <!-- <div class="form-group">
+                <label for="breed-input">Optional</label>
+                <input type="text" class="form-control" placeholder="Breed" id="breed-input">
+            </div> -->
+            <br>
+            <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr!</button>
         </form>
     </div>
 
@@ -121,7 +103,7 @@
 
     <!-- main app -->
     <script type='text/javascript'>
-    
+
         // Dropdown Control
         $('.drop-gender').on('click', function () {
             $('.drop-gender').removeClass('active')
@@ -134,7 +116,39 @@
         $('.drop-size').on('click', function () {
             $('.drop-size').removeClass('active')
             $(this).addClass('active')
-        })
+        });
+
+        // on-click submit
+        $('#submit-input').on('click', function (event) {
+            event.preventDefault();
+
+            localStorage.setItem('offset', 0);
+            var zip = $('#zip-code-input').val().trim();
+            var gender = $('#gender-input').val().trim();
+            var age = $('#age-input').val().trim();
+            var size = $('#size-input').val().trim();
+
+            // var breed = $('#breed-input').val().trim();
+            var breed = 'unimplimented'
+
+            console.log('zip: ' + zip);
+            console.log('gender: ' + gender);
+            console.log('age: ' + age);
+            console.log('size: ' + size);
+            console.log('breed: ' + breed);
+
+            if (zip) {
+                localStorage.setItem('zip', zip);
+                localStorage.setItem('gender', gender);
+                localStorage.setItem('age', age);
+                localStorage.setItem('size', size);
+
+                window.location.href = "results.html";
+            } else {
+                
+            }
+
+        });
     </script>
 </body>
 
