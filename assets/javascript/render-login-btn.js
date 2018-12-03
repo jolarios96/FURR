@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     var database = firebase.database();
 
     $('#login-link').on('click', function () {
-        // change the url to the last page saved to cachedPage
+        // save the page url cachedPage
         window.location.href = sessionStorage.setItem('cachedPage', window.location.href);
     });
 
