@@ -95,6 +95,121 @@
     <!-- renders login btn to navbar -->
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
+
+    <script>
+    //search for ptes
+    $("#submit-input").on("click", function(event){
+        event.preventDefault();
+        
+        //grabs values from user input for API call
+        area = $("#zipCode").val().trim();
+        breed = $("#breed-input").val().trim();
+        gender = $("#gender-input").children(".active").text();
+            if (gender === "Male"){
+                gender = "M";
+            }
+            else if (gender==="Female"){
+                gender = "F";
+            }
+            else {
+                gender="";
+            }
+        age = $("#age-input").children(".active").text();
+            if(age==="Any"){
+                age ="";
+            }
+        size = $("#size-input").children(".active").text();
+            if(size==="Any"){
+                size="";
+            }
+        pet=$("#pet-input").children(".active").text();
+        //gets rid of the form div
+        $('form').empty();
+        console.log(area);
+        console.log(breed);
+        console.log(gender);
+        console.log(age);
+        console.log(size);
+        console.log(pet);
+        
+
+        // Within $.ajax{...} is where we fill out our query
+        scramble();
+    })
+    
+    $("#approve").on("click", function(){
+        favArray.push(petID);
+        display(petsToSee);
+        localStorage.favorites = JSON.stringify(favArray);
+        localStorage.counter=counter;
+        
+    })
+
+    $("#disapprove").on("click", function() {
+        display(petsToSee);
+        localStorage.counter = counter;
+    })
+
+    //API call to petfinder API
+    function scramble() {
+        apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
+        url = 'http://api.petfinder.com/pet.find';
+        $.ajax({
+            url: url,
+            method: "GET",
+            jsonp: "callback",
+            dataType: "jsonp",
+            data: {
+                key: apiKey,
+                animal: pet.toLowerCase(),
+                breed: breed,
+                size: size,
+                sex: gender,
+                age: age,
+                location: area,
+                count: 100,
+                offset: 0,
+                output: 'basic',
+                format: 'json'
+        }}).then(function (response){
+            console.log(response);
+            for(var i = 0; i <response.petfinder.pets.pet.length; i++){
+                petsToSee.push(response.petfinder.pets.pet[i])
+            }
+            display(petsToSee);
+            })
+    }
+    
+    function display (chicken) {
+        petID = chicken[counter].id.$t;
+        checkPets(chicken);
+        if(!dejaVu){
+            $("#petImage").attr("src", chicken[counter].media.photos.photo[2].$t);
+            $("#petName").html(chicken[counter].name.$t);
+            $("#scrollBox").html(chicken[counter].description.$t);
+            $("#petGender").html(chicken[counter].sex.$t)
+            $("#petAge").html(chicken[counter].age.$t)
+            var contact = $("<div>");
+            contact.append($("<p>").text(chicken[counter].contact.phone.$t), $("<p>").text(chicken[counter].contact.email.$t));
+            $("#contactInfo").html(contact)
+            counter++
+        }
+        else{
+            counter++
+            display(chicken);
+        }
+    }
+
+    function checkPets (response) {
+        dejaVu = false;
+        for (var i = 0; i<favArray.length; i ++){
+            if (favArray[i]===response[counter].id.$t) {
+                dejaVu = true;
+            }
+        }
+    }
+
+    </script>
 </body>
 
 </html>
