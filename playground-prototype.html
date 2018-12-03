@@ -85,6 +85,9 @@
         apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         var url = 'http://api.petfinder.com/pet.find';
         var offset = localStorage.getItem('offset');
+        var size = localStorage.getItem('size');
+        var gender = localStorage.getItem('gender');
+        var age = localStorage.getItem('age');
 
         findPet(offset);
 
@@ -108,15 +111,20 @@
                 data: {
                     key: apiKey,
                     animal: pet,
+                    // size: size,
+                    // sex: gender,
                     'location': zip,
+                    // age: age,
+                    offset: offset,
+                    count: 0,
                     output: 'basic',
                     format: 'json'
                 }
             }).then(function (response) {
                 console.log(response)
-                $("#pet-image").attr("src", response.petfinder.pets.pet[1].media.photos.photo[2].$t);
-                $("#pet-name").html(response.petfinder.pets.pet[1].name.$t);
-                $("#pet-bio").html(response.petfinder.pets.pet[1].description.$t)
+                $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[0].$t);
+                $("#pet-name").html(response.petfinder.pets.pet[offset].name.$t);
+                $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
             })
         }
     </script>

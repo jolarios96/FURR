@@ -125,19 +125,28 @@
             var gender = $('#gender-input').val().trim();
             var age = $('#age-input').val().trim();
             var size = $('#size-input').val().trim();
-            // var breed = $('#breed-input').val().trim();
-            var breed = 'unimplimented'
 
-            console.log('zip: ' + zip);
-            console.log('gender: ' + gender);
-            console.log('age: ' + age);
-            console.log('size: ' + size);
-            console.log('breed: ' + breed);
+            if ((zip) && (gender) && (age) && (size)) {
+                // var breed = $('#breed-input').val().trim();
+                var breed = 'unimplimented'
 
-            localStorage.setItem('zip', zip);
-            localStorage.setItem('gender', gender);
-            localStorage.setItem('age', age);
-            localStorage.setItem('size', size);
+                console.log('zip: ' + zip);
+                console.log('gender: ' + gender);
+                console.log('age: ' + age);
+                console.log('size: ' + size);
+                console.log('breed: ' + breed);
+
+                localStorage.setItem('zip', zip);
+                localStorage.setItem('gender', gender);
+                localStorage.setItem('age', age);
+                localStorage.setItem('size', size);
+
+                window.location.href = "playground-prototype.html";
+            } else {
+                alert('Please fill-in all of the fields.')
+            }
+
+
 
         });
     </script>
