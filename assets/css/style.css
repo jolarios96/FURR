@@ -42,8 +42,16 @@ body {
     text-align: justify;
 }
 
-.nav-link, .btn-secondary {
+.nav-link {
     background-color: transparent;
+    border-color: #343a40;
+    font-family: 'Maven Pro', sans-serif;
+    color: #F19483 !important;
+    font-size: 19px;
+}
+
+.btn-secondary {
+    background-color: F19482;
     border-color: #343a40;
     font-family: 'Maven Pro', sans-serif;
     color: #F19483 !important;

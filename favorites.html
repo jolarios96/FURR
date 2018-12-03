@@ -19,6 +19,43 @@
     <!-- Dev Styles -->
     <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .card-edit {
+            margin: 10px auto;
+            width: 55%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            box-shadow: 5px 10px 18px #888888;
+        }
+        .card-body-edit{
+            float: right;
+            width: 50%;
+            padding: 0 20px;
+            word-wrap: break-word;
+        }
+        .fav-img{
+            float: left;
+        }
+        .map-link{
+            width: 100%;
+
+            margin-top: 5px;
+            word-wrap: break-word;
+            min-width: 110px;
+        }
+        @media only screen and (max-width: 800px) {
+            .fav-img{
+                width: 100% !important;
+                float: none;
+            }
+            .card-body-edit{
+                margin-top: 5px;
+                width: auto;
+                float: none;
+            }
+
+        }   
+    </style>
 </head>
 
 <body>
@@ -41,32 +78,37 @@
         </div>
     </nav>
 
+    <div id='fav-body'></div>
 
-<div class='container' id="fav-body">
-</div>
 
-    <!-- jQuery & Bootstrap JS References -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- jQuery Ref -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
-    <!-- Initialize Firebase for Scripts-->
+    <!-- Popper Ref -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Ref -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- initialize firebase -->
     <script src='assets/javascript/firebase-config.js'></script>
 
     <!-- renders login btn to navbar -->
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
     <!-- Main App -->
+    <!-- render favorites -->
     <script>
         // Petfinder key and url
-        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
-        var url = 'http://api.petfinder.com/pet.get';
-
-
-        function generateFavs () {
+        function generateFavs() {
+            var url = 'http://api.petfinder.com/pet.get';
+            var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
             $("#fav-body").empty();
-            var favorites = JSON.parse(localStorage.favorites);
-            for (var i = 0; i < favorites.length; i ++){
+            var favorites = JSON.parse(localStorage.getItem('favArray'));
+            for (var i = 0; i < favorites.length; i++) {
                 $.ajax({
                     url: url,
                     jsonp: "callback",
@@ -76,47 +118,49 @@
                         id: favorites[i],
                         output: 'basic',
                         format: 'json'
-                    }}).then(function(response) {
+                    }
+                }).then(function (response) {
                     console.log(response);
-                    var count = 0;
                     makeCard(response);
                 })
             }
 
         }
 
-        function makeCard(chicken) {
+        function makeCard(response) {
             //retrieve and format data from API call
-            var petImg = $("<img>").attr({"src": chicken.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px"});
-            var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
-            // var petDesc = $("<p>").text(chicken.petfinder.pet.description.$t);
-            // petDesc.attr("class", "card-text");
-            var petSex = $("<p>").text(chicken.petfinder.pet.sex.$t);
-            var petAge = $("<p>").text(chicken.petfinder.pet.age.$t);
-
-                //contact info is displaying as [Object Object still... for now I'm just commenting it out]
-            // var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
+            var petImg;
+            if (response.petfinder.pet.media.photos) {
+                petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "style": "width: 50%" }).addClass('fav-img clearfix');
+            } else {
+                petImg = $("<img>").attr({ "src": 'https://via.placeholder.com/500x450.png?text=No+Img+Available', "style": "width: 50%" }).addClass('fav-img clearfix');
+            }
+            var petName = $("<h5>").text(response.petfinder.pet.name.$t);
+            // var petDesc = $("<p>").text(response.petfinder.pet.description.$t);
+            // petDesc.addClass("card-text");
+            var petSex = $("<p>").text(response.petfinder.pet.sex.$t);
+            var petAge = $("<p>").text(response.petfinder.pet.age.$t);
+            var petPhone = $("<p>").text(response.petfinder.pet.contact.phone.$t);
+            var petEmail = $("<p>").text(response.petfinder.pet.contact.email.$t);
+            var petCity = $("<p>").text(response.petfinder.pet.contact.city.$t + ', ' + response.petfinder.pet.contact.state.$t);
 
             //build card and push info into such
-                        var cardDiv = $("<div>").attr("class", "card");
-                        var cardBody = $("<div>").attr("class", "card-body");
-                        var infoRow = $("<div>").attr("class", "row");
-                        var col1 = $("<div>").attr("class", "col-md-8").append(petAge);
-                        var col2 = $("<div>").attr("class", "col-md-4").append(petSex);
-                        // var col3 = $("<div>").attr("class", "col-md-8").append(petContact);
-                        infoRow.append(col1, col2);
-                        cardBody.append(petName, infoRow);
-                        var anchor = $("<a>").attr({"href": "getPet.html", "class" : "text-center"})
-                        anchor.append(petImg);
-                        cardDiv.append(anchor, cardBody);
-                        var column = $("<div>").attr("class", "col-md-4 float-left");
-                        column.append(cardDiv)
-            //appends card to favorites display
-            $("#fav-body").append(column);
+            var cardDiv = $("<div>").addClass('card-edit clearfix');
+            var cardBody = $("<div>").addClass('card-body-edit')
+
+            var mapLink = $('<button>').addClass('btn btn-secondary map-link').text('Map Link!');
+
+            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
+
+            cardDiv.append(petImg, cardBody, mapLink);
+            $("#fav-body").append(cardDiv);
         }
         $(document).ready(generateFavs());
 
     </script>
+
+    <!-- renders login btn to navbar -->
+    <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
 </body>
 
