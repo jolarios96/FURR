@@ -98,12 +98,13 @@
     <!-- renders login btn to navbar -->
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
+    
     <!-- Main App -->
     <!-- render favorites -->
     <script>
         // Petfinder key and url
         function generateFavs() {
-            var url = 'http://api.petfinder.com/pet.get';
+            var url = 'https://api.petfinder.com/pet.get';
             var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
             $("#fav-body").empty();
             var favorites = JSON.parse(localStorage.getItem('favArray'));
