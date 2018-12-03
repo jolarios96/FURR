@@ -42,13 +42,14 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="card" style="width: 24rem;">
-            <img class="card-img-top" id="pet-image" src="http://photos.petfinder.com/photos/pets/42464996/1/?bust=1534146477&width=500&-x.jpg"
-                alt="Card image cap">
+    <div id='results-container' class="container">
+        <div class="card w-50">
+            <!-- <img class="card-img-top" id="pet-image" src="http://photos.petfinder.com/photos/pets/42464996/1/?bust=1534146477&width=500&-x.jpg"
+                alt="Card image cap"> -->
+            <img class="card-img-top" id="pet-image" src="https://via.placeholder.com/600x600.png?text=No Results" alt="Card image cap">
             <div class="card-body">
                 <div class='clearfix'>
-                    <h5 class="card-title float-left" id="pet-name">Rex &lt3 </h5>
+                    <h5 class="card-title float-left" id="pet-name"></h5>
                     <div class='float-right'>
                         <button id='favorite-btn' class="btn btn-success">Favorite</button>
                         <button id='next-btn' class="btn btn-info">Next Match!</button>
@@ -125,14 +126,14 @@
                 }
             }).then(function (response) {
                 console.log(response);
-                
+
                 if (response.petfinder.pets.pet[offset]) {
                     if (response.petfinder.pets.pet[offset].media.photos) {
                         $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
                     } else {
-                        $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=No+Img+Available');
+                        $("#pet-image").attr("src", 'https://via.placeholder.com/600x600.png?text=No+Img+ Available');
                     };
-                    if (response.petfinder.pets.pet[offset].description.$t){
+                    if (response.petfinder.pets.pet[offset].description.$t) {
                         $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
                     } else {
                         $("#pet-bio").html('No description');
@@ -143,7 +144,8 @@
                     petID = response.petfinder.pets.pet[offset].id.$t;
 
                 } else {
-                    $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=');
+                    $("#pet-image").attr("src", 'https://via.placeholder.com/600x600.png?text=The+End');
+                    $("#pet-bio").empty();
                     $("#pet-name").html('End of List :(');
                 };
 
@@ -152,9 +154,10 @@
             $('#favorite-btn').on('click', function () {
                 // save to local
                 var tmp = JSON.parse(localStorage.getItem('favArray'));
-                
+
                 // if same pet isn't already in array
-                if (!tmp.includes(petID)) {
+
+                if ((tmp) && (!tmp.includes(petID))) {
                     tmp.push(petID);
                     localStorage.setItem('favArray', JSON.stringify(tmp));
                     // alert('Saved to Favorites!')

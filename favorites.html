@@ -41,6 +41,8 @@
         </div>
     </nav>
 
+    <div id='fav-body'></div>
+
 
     <!-- jQuery Ref -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -82,7 +84,6 @@
                         format: 'json'
                     }
                 }).then(function (response) {
-
                     console.log(response);
                     var count = 0;
                     makeCard(response);
@@ -91,31 +92,31 @@
 
         }
 
-        function makeCard(chicken) {
+        function makeCard(response) {
             //retrieve and format data from API call
-            var petImg = $("<img>").attr({ "src": chicken.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px" });
-            var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
-            // var petDesc = $("<p>").text(chicken.petfinder.pet.description.$t);
-            // petDesc.attr("class", "card-text");
-            var petSex = $("<p>").text(chicken.petfinder.pet.sex.$t);
-            var petAge = $("<p>").text(chicken.petfinder.pet.age.$t);
+            var petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px" });
+            var petName = $("<h5>").text(response.petfinder.pet.name.$t);
+            // var petDesc = $("<p>").text(response.petfinder.pet.description.$t);
+            // petDesc.addClass("card-text");
+            var petSex = $("<p>").text(response.petfinder.pet.sex.$t);
+            var petAge = $("<p>").text(response.petfinder.pet.age.$t);
 
             //contact info is displaying as [Object Object still... for now I'm just commenting it out]
-            // var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
+            // var petContact = $("<p>").text(response.petfinder.pet.contact.phone.$t) + $("<p>").text(response.petfinder.pet.contact.email.$t)
 
             //build card and push info into such
-            var cardDiv = $("<div>").attr("class", "card");
-            var cardBody = $("<div>").attr("class", "card-body");
-            var infoRow = $("<div>").attr("class", "row");
-            var col1 = $("<div>").attr("class", "col-md-8").append(petAge);
-            var col2 = $("<div>").attr("class", "col-md-4").append(petSex);
-            // var col3 = $("<div>").attr("class", "col-md-8").append(petContact);
+            var cardDiv = $("<div>").addClass("card");
+            var cardBody = $("<div>").addClass("card-body");
+            var infoRow = $("<div>").addClass("row");
+            var col1 = $("<div>").addClass("col-md-8").append(petAge);
+            var col2 = $("<div>").addClass("col-md-4").append(petSex);
+            // var col3 = $("<div>").addClass("col-md-8").append(petContact);
             infoRow.append(col1, col2);
             cardBody.append(petName, infoRow);
             var anchor = $("<a>").attr({ "href": "getPet.html", "class": "text-center" })
             anchor.append(petImg);
             cardDiv.append(anchor, cardBody);
-            var column = $("<div>").attr("class", "col-md-4 float-left");
+            var column = $("<div>").addClass("");
             column.append(cardDiv)
             //appends card to favorites display
             $("#fav-body").append(column);
