@@ -94,7 +94,12 @@
 
         function makeCard(response) {
             //retrieve and format data from API call
-            var petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px" });
+            var petImg
+            if (response.petfinder.pet.media.photos) {
+                petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "style": "width: 50%" });
+            } else {
+                petImg = $("<img>").attr({ "src": 'https://via.placeholder.com/500x450.png?text=No+Img+Available', "style": "width: 50%" });
+            }
             var petName = $("<h5>").text(response.petfinder.pet.name.$t);
             // var petDesc = $("<p>").text(response.petfinder.pet.description.$t);
             // petDesc.addClass("card-text");
@@ -105,7 +110,7 @@
             // var petContact = $("<p>").text(response.petfinder.pet.contact.phone.$t) + $("<p>").text(response.petfinder.pet.contact.email.$t)
 
             //build card and push info into such
-            var cardDiv = $("<div>").addClass("card");
+            var cardDiv = $("<div>").attr('style', 'width: 55%').addClass("card");
             var cardBody = $("<div>").addClass("card-body");
             var infoRow = $("<div>").addClass("row");
             var col1 = $("<div>").addClass("col-md-8").append(petAge);
@@ -113,13 +118,16 @@
             // var col3 = $("<div>").addClass("col-md-8").append(petContact);
             infoRow.append(col1, col2);
             cardBody.append(petName, infoRow);
-            var anchor = $("<a>").attr({ "href": "getPet.html", "class": "text-center" })
-            anchor.append(petImg);
-            cardDiv.append(anchor, cardBody);
-            var column = $("<div>").addClass("");
-            column.append(cardDiv)
+            // var anchor = $("<a>");
+            //     // anchor.attr({ "href": "getPet.html" })
+            // anchor.append(petImg);
+            // cardDiv.append(anchor, cardBody);
+            cardDiv.append(petImg, cardBody);
+            // var column = $("<div>")
+            // column.append(cardDiv)
             //appends card to favorites display
-            $("#fav-body").append(column);
+            // $("#fav-body").append(column);
+            $("#fav-body").append(cardDiv);
         }
         $(document).ready(generateFavs());
 
