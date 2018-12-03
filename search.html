@@ -60,9 +60,9 @@
                         Gender
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
-                        <a class="dropdown-item active" href="#">Any</a>
-                        <a class="dropdown-item" href="#">Male</a>
-                        <a class="dropdown-item" href="#">Female</a>
+                        <a class="dropdown-item drop-gender" href="#">Any</a>
+                        <a class="dropdown-item drop-gender" href="#">Male</a>
+                        <a class="dropdown-item drop-gender" href="#">Female</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -71,11 +71,11 @@
                         Age
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
-                        <a class="dropdown-item active" href="#">Any</a>
-                        <a class="dropdown-item" href="#">Baby</a>
-                        <a class="dropdown-item" href="#">Young</a>
-                        <a class="dropdown-item" href="#">Adult</a>
-                        <a class="dropdown-item" href="#">Senior</a>
+                        <a class="dropdown-item drop-age" href="#">Any</a>
+                        <a class="dropdown-item drop-age" href="#">Baby</a>
+                        <a class="dropdown-item drop-age" href="#">Young</a>
+                        <a class="dropdown-item drop-age" href="#">Adult</a>
+                        <a class="dropdown-item drop-age" href="#">Senior</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -84,11 +84,11 @@
                         Size
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
-                        <a class="dropdown-item active" href="#">Any</a>
-                        <a class="dropdown-item" href="#">Small</a>
-                        <a class="dropdown-item" href="#">Medium</a>
-                        <a class="dropdown-item" href="#">Large</a>
-                        <a class="dropdown-item" href="#">Extra-Large</a>
+                        <a class="dropdown-item drop-size" href="#">Any</a>
+                        <a class="dropdown-item drop-size" href="#">Small</a>
+                        <a class="dropdown-item drop-size" href="#">Medium</a>
+                        <a class="dropdown-item drop-size" href="#">Large</a>
+                        <a class="dropdown-item drop-size" href="#">Extra-Large</a>
                     </div>
                     <br>
                 </div>
@@ -98,7 +98,7 @@
     </div>
 
 
-        <!-- SCRIPTS BELOW -->
+    <!-- SCRIPTS BELOW -->
     <!-- =========================================================================================================================== -->
 
     <!-- jQuery Ref -->
@@ -119,6 +119,21 @@
     <!-- renders login btn to navbar -->
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
+    <!-- Dropdown Control -->
+    <script type='text/javascript'>
+        $('.drop-gender').on('click', function () {
+            $('.drop-gender').removeClass('active')
+            $(this).addClass('active')
+        })
+        $('.drop-age').on('click', function () {
+            $('.drop-age').removeClass('active')
+            $(this).addClass('active')
+        })
+        $('.drop-size').on('click', function () {
+            $('.drop-size').removeClass('active')
+            $(this).addClass('active')
+        })
+    </script>
 </body>
 
 </html>
