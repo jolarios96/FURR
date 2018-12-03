@@ -47,13 +47,13 @@
                 <label for="zip-code">Zip Code</label>
                 <input type="zip" class="form-control" id="zip-code-input" placeholder="Enter Zip Code">
             </div>
-            <label for='gender-input'>Example select</label>
+            <label for='gender-input'>Gender</label>
             <select id='gender-input' class="form-control">
                 <option>Any<option>
                 <option>Male<option>
                 <option>Female<option>
             </select>
-            <label for='age-input'>Example select</label>
+            <label for='age-input'>Age</label>
             <select id='age-input' class="form-control">
                 <option>Any<option>
                 <option>Baby<option>
@@ -61,7 +61,7 @@
                 <option>Adult<option>
                 <option>Senior<option>
             </select>
-            <label for='size-input'>Example select</label>
+            <label for='size-input'>Size</label>
             <select id='size-input' class="form-control">
                 <option>Any<option>
                 <option>Small<option>
@@ -128,12 +128,17 @@
             // var breed = $('#breed-input').val().trim();
             var breed = 'unimplimented'
 
-            
             console.log('zip: ' + zip);
             console.log('gender: ' + gender);
             console.log('age: ' + age);
             console.log('size: ' + size);
             console.log('breed: ' + breed);
+
+            localStorage.setItem('zip', zip);
+            localStorage.setItem('gender', gender);
+            localStorage.setItem('age', age);
+            localStorage.setItem('size', size);
+
         });
     </script>
 </body>
