@@ -98,7 +98,7 @@
     <!-- renders login btn to navbar -->
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
-    
+
     <!-- Main App -->
     <!-- render favorites -->
     <script>
@@ -144,10 +144,11 @@
             var petEmail = $("<p>").text(response.petfinder.pet.contact.email.$t);
             var petCity = $("<p>").text(response.petfinder.pet.contact.city.$t + ', ' + response.petfinder.pet.contact.state.$t);
             var petID = response.petfinder.pet.id.$t;
+
             //build card and push info into such
             var cardDiv = $("<div>").addClass('card-edit clearfix');
             var cardBody = $("<div>").addClass('card-body-edit')            
-            var mapLink = $('<a>').attr({'href': 'getPet.html', 'data-petID': petID}).append($('<button>').addClass('btn btn-secondary map-link').text('Map Link!'));
+            var mapLink = $('<a>').attr({'href': 'getPet.html'+ '?id='+ petID, 'data-petID': petID}).append($('<button>').addClass('btn btn-secondary map-link').text('Map Link!'));
 
             cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
 
