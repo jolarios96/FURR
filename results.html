@@ -163,6 +163,9 @@
                     // alert('Saved to Favorites!')
                 };
 
+                offset++;
+                localStorage.setItem('offset', offset);
+                findPet(offset);
             });
         }
     </script>
