@@ -13,16 +13,69 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Permanent+Marker" rel="stylesheet">
+
     <!-- Dev Styles -->
     <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class='titleBanner'>
-        <h1>FURR.</h1>
-        <h3>It's like Tinder, except for pets.</h3>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-bran" href="#" id='furrTitle'><h3>Furr.</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Breed</a>
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownGender" data-toggle="dropdown" aria-haspopup="true"           aria-expanded="false">
+                            Gender
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownGender" id="gender-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Male</a>
+                            <a class="dropdown-item" href="#">Female</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownAge" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
+                            Age
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAge" id="age-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                            <a class="dropdown-item" href="#">Baby</a>
+                            <a class="dropdown-item" href="#">Young</a>
+                            <a class="dropdown-item" href="#">Adult</a>
+                            <a class="dropdown-item" href="#">Senior</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownSize" id="size-input">
+                            <a class="dropdown-item active" href="#">Any</a>
+                                <a class="dropdown-item" href="#">Small</a>
+                                <a class="dropdown-item" href="#">Medium</a>
+                                <a class="dropdown-item" href="#">Large</a>
+                                <a class="dropdown-item" href="#">Extra-Large</a>
+                        </div>
+                        <br>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 <div class='container' id="fav-body">
 </div>
@@ -32,7 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <!-- Initialize Firebase for all Scripts-->
+    <!-- Initialize Firebase for Scripts-->
     <script>
         // Initialize Firebase
         var config = {
@@ -45,6 +98,7 @@
         };
         firebase.initializeApp(config);
 
+        // Petfinder key and url
         var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         var url = 'http://api.petfinder.com/pet.get';
 

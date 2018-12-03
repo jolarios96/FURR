@@ -14,19 +14,17 @@
         crossorigin="anonymous">
 
     <!-- Dev Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 </head>
 
 <body>
 
-    <div class="jumbotron">
+    <div id='session-data-container' class="jumbotron">
         <h1>Session Data:</h1>
-
     </div>
 
-    <div class="jumbotron">
-        <h1>Firebase Data:</h1>
-
+    <div id='database-data-container' class="jumbotron">
+        <h1>Database Data:</h1>
     </div>
 
 
@@ -49,7 +47,29 @@
     <script type='text/javascript' src='assets/javascript/firebase/push-data-firebase.js'></script>
     <!-- =========================================================================================================================== -->
     <script>
-        
+        // If the user is signed in
+        // Pull user's data from database
+
+        // database ref
+        var database = firebase.database();
+
+        database.ref('users/').on('child_added', function (snapshot) {
+            // store the data @ firebase
+            var name = snapshot.val().name;
+            var favorites = snapshot.val().favorites;
+            var offset = snapshot.val().offset;
+            
+            var pName = $('<p>').text(name);
+            var pFavorites = $('<p>').text(favorites);
+            var pOffset = $('<p>').text(offset);
+
+            $('#database-data-container').append(
+                $('<hr>'),
+                pName,
+                pFavorites,
+                pOffset,
+        );
+        });
     </script>
 </body>
 
