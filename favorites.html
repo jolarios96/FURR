@@ -63,13 +63,12 @@
     <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
     <!-- Main App -->
+    <!-- render favorites -->
     <script>
         // Petfinder key and url
-        var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
-        var url = 'http://api.petfinder.com/pet.get';
-
-
         function generateFavs() {
+            var url = 'http://api.petfinder.com/pet.get';
+            var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
             $("#fav-body").empty();
             var favorites = JSON.parse(localStorage.getItem('favArray'));
             for (var i = 0; i < favorites.length; i++) {
@@ -85,7 +84,6 @@
                     }
                 }).then(function (response) {
                     console.log(response);
-                    var count = 0;
                     makeCard(response);
                 })
             }
@@ -94,7 +92,7 @@
 
         function makeCard(response) {
             //retrieve and format data from API call
-            var petImg
+            var petImg;
             if (response.petfinder.pet.media.photos) {
                 petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "style": "width: 50%" });
             } else {
@@ -118,15 +116,8 @@
             // var col3 = $("<div>").addClass("col-md-8").append(petContact);
             infoRow.append(col1, col2);
             cardBody.append(petName, infoRow);
-            // var anchor = $("<a>");
-            //     // anchor.attr({ "href": "getPet.html" })
-            // anchor.append(petImg);
-            // cardDiv.append(anchor, cardBody);
+            
             cardDiv.append(petImg, cardBody);
-            // var column = $("<div>")
-            // column.append(cardDiv)
-            //appends card to favorites display
-            // $("#fav-body").append(column);
             $("#fav-body").append(cardDiv);
         }
         $(document).ready(generateFavs());
