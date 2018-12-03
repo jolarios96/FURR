@@ -24,167 +24,197 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">        
-                    <li class="nav-item">
-                        <a class="nav-link" href='search.html'>search </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href='favorites.html'>favorites</a>
-                    </li>
-                </ul> 
-                <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href='search.html'>search </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='favorites.html'>favorites</a>
+                </li>
+            </ul>
+            <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+        </div>
     </nav>
 
-<div class='container'>
-    <div class='row'>
+    <div class='container'>
+        <div class='row'>
 
-    <div class='col-md-4'>
-    <div class="card" style="width: 350px;">
-        <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-        <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
-        
-        <div class="card-body">
-            <!-- for pet info -->
-            <div class='favePetInfo'>
-                <h5 class="favePetName">Fido</h5>
-        
-                <div class='row'>
-                    <div class='col-md-3'>
-                        <p id='favePetAge'>3 yo</p>
-                    </div>
-                
-                    <div class='col-md-3'>
-                        <p id='favePetGender'>Female</p>
-                    </div>
-                    <div class='col-md-6'>
-                            <p id='faveContactInfo'>925-333-4467</p>
+            <div class='col-md-4'>
+                <div class="card" style="width: 350px;">
+                    <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+                    <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
+
+                    <div class="card-body">
+                        <!-- for pet info -->
+                        <div class='favePetInfo'>
+                            <h5 class="favePetName">Fido</h5>
+
+                            <div class='row'>
+                                <div class='col-md-3'>
+                                    <p id='favePetAge'>3 yo</p>
+                                </div>
+
+                                <div class='col-md-3'>
+                                    <p id='favePetGender'>Female</p>
+                                </div>
+                                <div class='col-md-6'>
+                                    <p id='faveContactInfo'>925-333-4467</p>
+                                </div>
+                            </div>
+
+                            <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
+                            <div id='petDesc'>
+                                <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears.
+                                    Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit
+                                    cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow
+                                    gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop
+                                    soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding.
+                                    Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears.
+                                    Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit
+                                    cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow
+                                    gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop
+                                    soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding.
+                                    Marzipan carrot cake fruitcake powder.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
-                <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
-                <div id='petDesc'>
-                    <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
+
+            </div>
+
+            <div class='col-md-4'>
+                <div class="card" style="width: 350px;">
+                    <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+                    <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
+
+                    <div class="card-body">
+                        <!-- for pet info -->
+                        <div class='favePetInfo'>
+                            <h5 class="favePetName">Mr.Whiskers</h5>
+
+                            <div class='row'>
+                                <div class='col-md-3'>
+                                    <p id='favePetAge'>6 yo</p>
+                                </div>
+
+                                <div class='col-md-3'>
+                                    <p id='favePetGender'>Male</p>
+                                </div>
+                                <div class='col-md-6'>
+                                    <p id='faveContactInfo'>randomDopeEmail@lit.com</p>
+                                </div>
+                            </div>
+
+                            <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
+                            <div id='petDesc'>
+                                <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears.
+                                    Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit
+                                    cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow
+                                    gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop
+                                    soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding.
+                                    Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears.
+                                    Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit
+                                    cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow
+                                    gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop
+                                    soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding.
+                                    Marzipan carrot cake fruitcake powder.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    </div>
+            <div class='col-md-4'>
+                <div class="card" style="width: 350px;">
+                    <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+                    <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
 
-    <div class='col-md-4'>
-    <div class="card" style="width: 350px;">
-            <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-            <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
-            
-            <div class="card-body">
-                <!-- for pet info -->
-                <div class='favePetInfo'>
-                    <h5 class="favePetName">Mr.Whiskers</h5>
-            
-                    <div class='row'>
-                        <div class='col-md-3'>
-                            <p id='favePetAge'>6 yo</p>
-                        </div>
-                    
-                        <div class='col-md-3'>
-                            <p id='favePetGender'>Male</p>
-                        </div>
-                        <div class='col-md-6'>
-                                <p id='faveContactInfo'>randomDopeEmail@lit.com</p>
-                        </div>
-                    </div>
-                
-                    <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
-                    <div id='petDesc'>
-                        <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class='col-md-4'>
-        <div class="card" style="width: 350px;">
-                <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-                <img src="assets/images/placeholder.png" class="place-holder" alt="just a placeholder">
-                
-                <div class="card-body">
-                    <!-- for pet info -->
-                    <!-- <div class='favePetInfo'> -->
+                    <div class="card-body">
+                        <!-- for pet info -->
+                        <!-- <div class='favePetInfo'> -->
                         <h5 class="favePetName">VoldeTort</h5>
-                
+
                         <div class='row'>
                             <div class='col-md-3'>
                                 <p id='favePetAge'>75 yo</p>
                             </div>
-                        
+
                             <div class='col-md-3'>
                                 <p id='favePetGender'>Male</p>
                             </div>
                             <div class='col-md-6'>
-                                    <p id='faveContactInfo'>800-642-7480</p>
+                                <p id='faveContactInfo'>800-642-7480</p>
                             </div>
                         </div>
-                    
+
                         <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
                         <div id='petDesc'>
-                            <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
+                            <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread
+                                topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake
+                                topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear
+                                claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie.
+                                Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake
+                                powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly
+                                caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps
+                                cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon
+                                drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake
+                                icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
                         </div>
-                    <!-- </div> -->
+                        <!-- </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- SCRIPTS BELOW -->
+    <!-- =========================================================================================================================== -->
+
 
     <!-- jQuery Ref -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
     <!-- Initialize Firebase for Scripts-->
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDzixpXHU87uZ_gbAfy6YP3btwUVek9rWw",
-            authDomain: "project-furr.firebaseapp.com",
-            databaseURL: "https://project-furr.firebaseio.com",
-            projectId: "project-furr",
-            storageBucket: "project-furr.appspot.com",
-            messagingSenderId: "654872510123"
-        };
-        firebase.initializeApp(config);
+    <script src='assets/javascript/firebase-config.js'></script>
 
+    <!-- renders login btn to navbar -->
+    <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
+
+    <!-- Main App -->
+    <script>
         // Petfinder key and url
         var apiKey = 'a77d12da6b9ce71fa08cfe8f09710b6a'
         var url = 'http://api.petfinder.com/pet.get';
 
-        function generateFavs () {
+        function generateFavs() {
             // for (var i = 0; i < favorites.length; i ++){
-                $.ajax({
-                    url: url,
-                    // method: "GET",
-                    jsonp: "callback",
-                    dataType: "jsonp",
-                    data: {
-                        key: apiKey,
-                        id: 43124076,
-                        // favorites[i],
-                        output: 'basic',
-                        format: 'json'
-                    }}).then(function(response) {
-                    console.log(response);
-                    makeCard(response);
-                })
+            $.ajax({
+                url: url,
+                // method: "GET",
+                jsonp: "callback",
+                dataType: "jsonp",
+                data: {
+                    key: apiKey,
+                    id: 43124076,
+                    // favorites[i],
+                    output: 'basic',
+                    format: 'json'
+                }
+            }).then(function (response) {
+                console.log(response);
+                makeCard(response);
+            })
             // }
 
         }
 
-        function makeCard (chicken) {
+        function makeCard(chicken) {
             //retrieve and format data from API call
             var petImg = $("<img>").attr("src", chicken.petfinder.pet.media.photos.photo[2].$t);
             var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
@@ -193,7 +223,7 @@
             var petSex = $("<p>").text(chicken.petfinder.pet.sex.$t);
             var petAge = $("<p>").text(chicken.petfinder.pet.age.$t);
             var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
-            
+
             //build card and push info into such
             var cardDiv = $("<div>").attr("class", "card");
             var cardBody = $("<div>").attr("class", "card-body");
@@ -209,10 +239,7 @@
 
         $(document).ready(generateFavs());
     </script>
-    <!--  -->
 
-    <!-- Dev Scripts -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>

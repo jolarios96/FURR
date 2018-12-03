@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <title>FURR.Results</title>
 
- <!-- Firebase Reference -->
- <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
- <!-- Bootstrap Ref -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-     crossorigin="anonymous">
+    <!-- Bootstrap Ref -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Permanent+Marker" rel="stylesheet">
@@ -23,81 +23,77 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">                            
-                    <li class="nav-item">
-                        <a class="nav-link" href='search.html'>search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href='favorites.html'>favorites</a>
-                    </li>
-                </ul> 
-                <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href='search.html'>search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='favorites.html'>favorites</a>
+                </li>
+            </ul>
+            <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+        </div>
     </nav>
-        
-    
-        <div class="card" style="width: 350px;">
-            <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
-            <img src="assets/images/placeholder.png" class="img-thumbnail place-holder" alt="just a placeholder">
-            
-            <div class="card-body">
-                <!-- for pet info -->
-                <div class='favePetInfo'>
-                    <h5 class="favePetName">Mr.Whiskers</h5>
-            
-                    <div class='row'>
-                        <div class='col-md-3'>
-                            <p id='favePetAge'>6 yo</p>
-                        </div>
-                    
-                        <div class='col-md-3'>
-                            <p id='favePetGender'>Male</p>
-                        </div>
-                        <div class='col-md-6'>
-                                <p id='faveContactInfo'>randomDopeEmail@lit.com</p>
-                        </div>
+
+
+    <div class="card" style="width: 350px;">
+        <!-- Placeholder image for when we call petfinder api and insert a pet's image -->
+        <img src="assets/images/placeholder.png" class="img-thumbnail place-holder" alt="just a placeholder">
+
+        <div class="card-body">
+            <!-- for pet info -->
+            <div class='favePetInfo'>
+                <h5 class="favePetName">Mr.Whiskers</h5>
+
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <p id='favePetAge'>6 yo</p>
                     </div>
-                
-                    <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
-                    <div id='petDesc'>
-                        <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake powder.</p>
+
+                    <div class='col-md-3'>
+                        <p id='favePetGender'>Male</p>
                     </div>
+                    <div class='col-md-6'>
+                        <p id='faveContactInfo'>randomDopeEmail@lit.com</p>
+                    </div>
+                </div>
+
+                <!-- Pet description, automatically sets up a scrollable version when description gets too long.-->
+                <div id='petDesc'>
+                    <p class="card-text" id='scrollBox'>Gummies I love cotton candy gummi bears. Gingerbread topping
+                        danish I love jelly caramels pastry pastry. Brownie biscuit cupcake cheesecake topping sesame
+                        snaps cheesecake danish gummies. Pie marshmallow gummies macaroon bear claw topping. Lemon
+                        drops I love powder apple pie lollipop soufflé I love apple pie. Caramels carrot cake icing I
+                        love cotton candy pudding. Marzipan carrot cake fruitcake powder.Gummies I love cotton candy
+                        gummi bears. Gingerbread topping danish I love jelly caramels pastry pastry. Brownie biscuit
+                        cupcake cheesecake topping sesame snaps cheesecake danish gummies. Pie marshmallow gummies
+                        macaroon bear claw topping. Lemon drops I love powder apple pie lollipop soufflé I love apple
+                        pie. Caramels carrot cake icing I love cotton candy pudding. Marzipan carrot cake fruitcake
+                        powder.</p>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
     <!-- SCRIPTS BELOW -->
-    
+
 
     <!-- jQuery Ref -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
+    <!-- initialize firebase -->
+    <script src='assets/javascript/firebase-config.js'></script>
 
-    <!-- Initialize Firebase -->
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDzixpXHU87uZ_gbAfy6YP3btwUVek9rWw",
-            authDomain: "project-furr.firebaseapp.com",
-            databaseURL: "https://project-furr.firebaseio.com",
-            projectId: "project-furr",
-            storageBucket: "project-furr.appspot.com",
-            messagingSenderId: "654872510123"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <!--  -->
-
-    <!-- Dev Scripts -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <!-- script for finished firebase js -->
+    <!-- renders login btn to navbar -->
+    <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
 
 </body>
 
