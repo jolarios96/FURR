@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FURR.Home</title>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+    <!-- Bootstrap Ref -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- Dev Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Permanent+Marker" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href='search.html'>search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='favorites.html'>favorites</a>
+                </li>
+            </ul>
+            <span class="navbar-brand mb-0 h4" id='appDesc'>It's like Tinder , but for Pets</span>
+        </div>
+    </nav>
+
+    <div class="homeWrapper">
+        <form>
+            <div class="form-group">
+                <label for="zip-code">Zip Code</label>
+                <input type="zip" class="form-control" id="zip-code-input" placeholder="Enter Zip Code">
+            </div>
+            <select class="form-control">
+                <option>Gender</option>
+                <option>Any<option>
+                <option>Male<option>
+                <option>Female<option>
+            </select>
+            <br>
+            <select class="form-control">
+                <option>Age</option>
+                <option>Any<option>
+                <option>Baby<option>
+                <option>Young<option>
+                <option>Adult<option>
+                <option>Senior<option>
+            </select>
+            <br>
+            <select class="form-control">
+                <option>Size</option>
+                <option>Any<option>
+                <option>Small<option>
+                <option>Medium<option>
+                <option>Large<option>
+                <option>Extra-Large<option>
+            </select>
+            <br>
+            <div class="form-group">
+                <label for="breed-input">Optional</label>
+                <input type="text" class="form-control" placeholder="Breed" id="breed-input">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-input">Find me sum Furr.!</button>
+        </form>
+    </div>
+
+
+    <!-- SCRIPTS BELOW -->
+    <!-- =========================================================================================================================== -->
+
+    <!-- jQuery Ref -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- Popper Ref -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Ref -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- initialize firebase -->
+    <script src='assets/javascript/firebase-config.js'></script>
+
+    <!-- renders login btn to navbar -->
+    <script type='text/javascript' src='assets/javascript/render-login-btn.js'></script>
+
+    <!-- main app -->
+    <script type='text/javascript'>
+
+        // Dropdown Control
+        $('.drop-gender').on('click', function () {
+            $('.drop-gender').removeClass('active')
+            $(this).addClass('active')
+        })
+        $('.drop-age').on('click', function () {
+            $('.drop-age').removeClass('active')
+            $(this).addClass('active')
+        })
+        $('.drop-size').on('click', function () {
+            $('.drop-size').removeClass('active')
+            $(this).addClass('active')
+        })
+
+        // on-click submit
+        $('#train-submit-btn').on('click', function (event) {
+
+        })
+    </script>
+</body>
+
+</html>
