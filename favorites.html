@@ -146,9 +146,8 @@
 
             //build card and push info into such
             var cardDiv = $("<div>").addClass('card-edit clearfix');
-            var cardBody = $("<div>").addClass('card-body-edit')
-
-            var mapLink = $('<button>').addClass('btn btn-secondary map-link').text('Map Link!');
+            var cardBody = $("<div>").addClass('card-body-edit')            
+            var mapLink = $('<a>').attr('href', 'getPet.html').append($('<button>').addClass('btn btn-secondary map-link').text('Map Link!'));
 
             cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
 
