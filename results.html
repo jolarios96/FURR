@@ -25,10 +25,11 @@
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href='index.html' id='furrTitle'>Furr .</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
+        <a class="navbar-brand" href='index.html' id='furrTitle'><img src='assets/images/furr.png' style='width: 50px; height: 50px'></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -163,6 +164,9 @@
                     // alert('Saved to Favorites!')
                 };
 
+                offset++;
+                localStorage.setItem('offset', offset);
+                findPet(offset);
             });
         }
     </script>
