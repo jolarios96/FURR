@@ -67,10 +67,10 @@
         var url = 'http://api.petfinder.com/pet.get';
 
 
-        function generateFavs () {
+        function generateFavs() {
             $("#fav-body").empty();
-            var favorites = JSON.parse(localStorage.favorites);
-            for (var i = 0; i < favorites.length; i ++){
+            var favorites = JSON.parse(localStorage.getItem('favArray'));
+            for (var i = 0; i < favorites.length; i++) {
                 $.ajax({
                     url: url,
                     jsonp: "callback",
@@ -80,7 +80,9 @@
                         id: favorites[i],
                         output: 'basic',
                         format: 'json'
-                    }}).then(function(response) {
+                    }
+                }).then(function (response) {
+
                     console.log(response);
                     var count = 0;
                     makeCard(response);
@@ -89,32 +91,50 @@
 
         }
 
-        function makeCard(chicken) {
+        function makeCard(response) {
+            var petImg;
+            var petName;
+            var petSex;
+            // var petAge;
+
+            if (response.petfinder.pets.pet[offset].media.photos) {
+                $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
+            } else {
+                $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=No+Img+Available');
+            };
+            if (response.petfinder.pets.pet[offset].description.$t) {
+                $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
+            } else {
+                $("#pet-bio").html('No description');
+            };
+
+            $("#pet-name").html(response.petfinder.pets.pet[offset].name.$t);
+
             //retrieve and format data from API call
-            var petImg = $("<img>").attr({"src": chicken.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px"});
+            var petImg = $("<img>").attr({ "src": chicken.petfinder.pet.media.photos.photo[2].$t, "class": "img-thumbnail", "style": "height: 250px" });
             var petName = $("<h5>").text(chicken.petfinder.pet.name.$t);
             // var petDesc = $("<p>").text(chicken.petfinder.pet.description.$t);
             // petDesc.attr("class", "card-text");
             var petSex = $("<p>").text(chicken.petfinder.pet.sex.$t);
             var petAge = $("<p>").text(chicken.petfinder.pet.age.$t);
 
-                //contact info is displaying as [Object Object still... for now I'm just commenting it out]
+            //contact info is displaying as [Object Object still... for now I'm just commenting it out]
             // var petContact = $("<p>").text(chicken.petfinder.pet.contact.phone.$t) + $("<p>").text(chicken.petfinder.pet.contact.email.$t)
 
             //build card and push info into such
-                        var cardDiv = $("<div>").attr("class", "card");
-                        var cardBody = $("<div>").attr("class", "card-body");
-                        var infoRow = $("<div>").attr("class", "row");
-                        var col1 = $("<div>").attr("class", "col-md-8").append(petAge);
-                        var col2 = $("<div>").attr("class", "col-md-4").append(petSex);
-                        // var col3 = $("<div>").attr("class", "col-md-8").append(petContact);
-                        infoRow.append(col1, col2);
-                        cardBody.append(petName, infoRow);
-                        var anchor = $("<a>").attr({"href": "getPet.html", "class" : "text-center"})
-                        anchor.append(petImg);
-                        cardDiv.append(anchor, cardBody);
-                        var column = $("<div>").attr("class", "col-md-4 float-left");
-                        column.append(cardDiv)
+            var cardDiv = $("<div>").attr("class", "card");
+            var cardBody = $("<div>").attr("class", "card-body");
+            var infoRow = $("<div>").attr("class", "row");
+            var col1 = $("<div>").attr("class", "col-md-8").append(petAge);
+            var col2 = $("<div>").attr("class", "col-md-4").append(petSex);
+            // var col3 = $("<div>").attr("class", "col-md-8").append(petContact);
+            infoRow.append(col1, col2);
+            cardBody.append(petName, infoRow);
+            var anchor = $("<a>").attr({ "href": "getPet.html", "class": "text-center" })
+            anchor.append(petImg);
+            cardDiv.append(anchor, cardBody);
+            var column = $("<div>").attr("class", "col-md-4 float-left");
+            column.append(cardDiv)
             //appends card to favorites display
             $("#fav-body").append(column);
         }

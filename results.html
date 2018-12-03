@@ -131,12 +131,12 @@
                         $("#pet-image").attr("src", response.petfinder.pets.pet[offset].media.photos.photo[2].$t);
                     } else {
                         $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=No+Img+Available');
-                    }
+                    };
                     if (response.petfinder.pets.pet[offset].description.$t){
                         $("#pet-bio").html(response.petfinder.pets.pet[offset].description.$t)
                     } else {
                         $("#pet-bio").html('No description');
-                    }
+                    };
 
                     $("#pet-name").html(response.petfinder.pets.pet[offset].name.$t);
 
@@ -145,9 +145,9 @@
                 } else {
                     $("#pet-image").attr("src", 'https://via.placeholder.com/360x360.png?text=');
                     $("#pet-name").html('End of List :(');
-                }
+                };
 
-            })
+            });
 
             $('#favorite-btn').on('click', function () {
                 // save to local
@@ -158,9 +158,9 @@
                     tmp.push(petID);
                     localStorage.setItem('favArray', JSON.stringify(tmp));
                     // alert('Saved to Favorites!')
-                }
+                };
 
-            })
+            });
         }
     </script>
 </body>
