@@ -35,6 +35,9 @@
         .fav-img{
             float: left;
         }
+        .map-link{
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -127,7 +130,10 @@
             //build card and push info into such
             var cardDiv = $("<div>").addClass('card-edit clearfix');
             var cardBody = $("<div>").addClass('card-body-edit')
-            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
+                
+            var mapLink = $('<button>').addClass('btn btn-secondary map-link').text('Map Link!');
+
+            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail, mapLink);
 
             cardDiv.append(petImg, cardBody);
             $("#fav-body").append(cardDiv);
