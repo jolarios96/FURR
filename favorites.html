@@ -19,6 +19,23 @@
     <!-- Dev Styles -->
     <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .card-edit {
+            margin: auto;
+            width: 55%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            box-shadow: 5px 10px 18px #888888;
+        }
+        .card-body-edit{
+            float: right;
+            width: 50%;
+            padding: 0 20px;
+        }
+        .fav-img{
+            float: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -94,29 +111,24 @@
             //retrieve and format data from API call
             var petImg;
             if (response.petfinder.pet.media.photos) {
-                petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "style": "width: 50%" });
+                petImg = $("<img>").attr({ "src": response.petfinder.pet.media.photos.photo[2].$t, "style": "width: 50%" }).addClass('fav-img clearfix');
             } else {
-                petImg = $("<img>").attr({ "src": 'https://via.placeholder.com/500x450.png?text=No+Img+Available', "style": "width: 50%" });
+                petImg = $("<img>").attr({ "src": 'https://via.placeholder.com/500x450.png?text=No+Img+Available', "style": "width: 50%" }).addClass('fav-img clearfix');
             }
             var petName = $("<h5>").text(response.petfinder.pet.name.$t);
             // var petDesc = $("<p>").text(response.petfinder.pet.description.$t);
             // petDesc.addClass("card-text");
             var petSex = $("<p>").text(response.petfinder.pet.sex.$t);
             var petAge = $("<p>").text(response.petfinder.pet.age.$t);
-
-            //contact info is displaying as [Object Object still... for now I'm just commenting it out]
-            // var petContact = $("<p>").text(response.petfinder.pet.contact.phone.$t) + $("<p>").text(response.petfinder.pet.contact.email.$t)
+            var petPhone = $("<p>").text(response.petfinder.pet.contact.phone.$t);
+            var petEmail = $("<p>").text(response.petfinder.pet.contact.email.$t);
+            var petCity = $("<p>").text(response.petfinder.pet.contact.city.$t + ', ' + response.petfinder.pet.contact.state.$t);
 
             //build card and push info into such
-            var cardDiv = $("<div>").attr('style', 'width: 55%').addClass("card");
-            var cardBody = $("<div>").addClass("card-body");
-            var infoRow = $("<div>").addClass("row");
-            var col1 = $("<div>").addClass("col-md-8").append(petAge);
-            var col2 = $("<div>").addClass("col-md-4").append(petSex);
-            // var col3 = $("<div>").addClass("col-md-8").append(petContact);
-            infoRow.append(col1, col2);
-            cardBody.append(petName, infoRow);
-            
+            var cardDiv = $("<div>").addClass('card-edit clearfix');
+            var cardBody = $("<div>").addClass('card-body-edit')
+            cardBody.append(petName, petAge, petSex, petCity, petPhone, petEmail);
+
             cardDiv.append(petImg, cardBody);
             $("#fav-body").append(cardDiv);
         }
