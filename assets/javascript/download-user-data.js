@@ -27,11 +27,6 @@ firebase.auth().onAuthStateChanged(function (user) {
                         localStorage.setItem('offset', childData.offset);
                         localStorage.setItem('userID', user.uid);
 
-                        // console.logs
-                        console.log('key: ' + key);
-                        console.log('name: ' + childData.name);
-                        console.log('favorites: ' + childData.favorites);
-                        console.log('offset: ' + childData.offset);
 
                         // remember that boolean? (line 12)
                         existence = true;

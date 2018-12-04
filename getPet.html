@@ -128,10 +128,6 @@
                     format: 'json'
                 },
                 success: function (response) {
-                    /// debugger;
-
-
-                    console.log("getpet", response);
 
                     var
                         petName = response.petfinder.pet.name.$t
@@ -156,9 +152,6 @@
                     var pImg = $('<img />');
                     pImg.attr('src', petPhotosize).appendTo(".PetPhoto")
 
-                    console.log(response);
-                    console.log(petcontactInfo);
-                    console.log("petZip", petZip);
 
                 }
 
