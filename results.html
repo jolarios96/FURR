@@ -102,7 +102,6 @@
         });
 
         function findPet() {
-            console.log(offset);
             var zip = localStorage.getItem('zip');
             var pet = "dog";
             var petID;
@@ -126,7 +125,6 @@
                     format: 'json'
                 }
             }).then(function (response) {
-                console.log(response);
 
                 if (response.petfinder.pets.pet[offset]) {
                     if (response.petfinder.pets.pet[offset].media.photos) {
